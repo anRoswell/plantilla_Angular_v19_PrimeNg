@@ -1,0 +1,19 @@
+pre {
+  background: #1e1e1e;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+code {
+  font-family: "Courier New", Courier, monospace;
+} // Cambia el tema si lo deseas
+
+.hljs-ln-numbers {
+  text-align: right;
+  padding-right: 10px;
+  color: #aaa;
+  user-select: none;
+  border-right: 1px solid #555;
+}
