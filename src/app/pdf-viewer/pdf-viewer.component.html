@@ -1,0 +1,14 @@
+<div ngIf="isLoaded; else loading">
+  <pdf-viewer [src]="pdfSrc" [page]="page" (after-load-complete)="onLoadComplete($event)"
+    style="display: block;"></pdf-viewer>
+
+  <div>
+    <button (click)="page = page - 1" [disabled]="page === 1">Anterior</button>
+    <span>Página {{ page }} de {{ totalPages }}</span>
+    <button (click)="page = page + 1" [disabled]="page === totalPages">Siguiente</button>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Cargando PDF...</p>
+</ng-template>

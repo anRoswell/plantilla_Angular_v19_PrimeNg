@@ -27,6 +27,7 @@
     "code-line": "^1.2.0",
     "codemirror": "^6.0.1",
     "highlight.js": "^11.11.1",
+    "ng2-pdf-viewer": "^10.4.0",
     "primeicons": "^7.0.0",
     "primeng": "^18.0.2",
     "rxjs": "~7.8.0",
