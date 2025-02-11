@@ -9,7 +9,10 @@
 <h2 class="font-bold text-xl">PrimeNG</h2>
 <div class="card flex justify-center">
   <p-button label="Check"></p-button>
+
 </div>
+
+{{response}}
 
 <h2 class="font-bold text-xl">Tailwind</h2>
 <div class="mx-auto">
@@ -22,6 +25,8 @@
 <iframe [src]="sanitizedUrl"></iframe>
 
 <p-button (click)="showDialog()" label="Modal" />
+
+<p-button (click)="showSweetAlert()" label="SweetAlert"></p-button>
 
 <p-dialog header="PDF" [modal]="true" [(visible)]="visible" [style]="{ width: '50%' }"
   [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" [maximizable]="true">
