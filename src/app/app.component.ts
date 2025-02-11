@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 // PrimeNG
 import { ButtonModule } from 'primeng/button';
@@ -28,6 +29,8 @@ import Swal from 'sweetalert2';
     CodeEditorComponent,
     PdfViewerComponent,
     Dialog,
+    Editor,
+    FormsModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -37,6 +40,7 @@ export class AppComponent implements OnInit {
   public sanitizedUrl;
   public visible: boolean = false;
   public response: string = '';
+  text: string | undefined;
 
   constructor(
     private primeng: PrimeNG,

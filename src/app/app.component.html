@@ -33,5 +33,10 @@
   <app-pdf-viewer></app-pdf-viewer>
 </p-dialog>
 
+<div class="card m-8">
+  <p-editor [(ngModel)]="text" [style]="{ height: '320px' }" />
+</div>
+
+{{text}}
 
 <router-outlet />
