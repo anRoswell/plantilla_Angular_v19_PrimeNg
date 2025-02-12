@@ -10,7 +10,7 @@ import { Dialog } from 'primeng/dialog';
 import { Editor } from 'primeng/editor';
 
 // IFrame
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CodeEditorComponent } from './code-editor/code-editor.component';
 
 // PdfViewer
@@ -19,6 +19,9 @@ import { HttpClient } from '@angular/common/http';
 
 // Alert
 import Swal from 'sweetalert2';
+
+// Visor
+import { NgxDocViewerModule } from 'ngx-doc-viewer'; // Importa el módulo
 
 @Component({
   selector: 'app-root',
@@ -31,6 +34,7 @@ import Swal from 'sweetalert2';
     Dialog,
     Editor,
     FormsModule,
+    NgxDocViewerModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -40,7 +44,9 @@ export class AppComponent implements OnInit {
   public sanitizedUrl;
   public visible: boolean = false;
   public response: string = '';
-  text: string | undefined;
+  public text: string | undefined;
+
+  public documentUrl: string;
 
   constructor(
     private primeng: PrimeNG,
@@ -60,6 +66,13 @@ export class AppComponent implements OnInit {
     this.sanitizedUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(
       'https://syspotec.com'
     );
+
+    // this.documentUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(
+    //   'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf'
+    // );
+
+    this.documentUrl =
+      'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf';
   }
 
   ngOnInit() {

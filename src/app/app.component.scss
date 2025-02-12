@@ -17,3 +17,8 @@ code {
   user-select: none;
   border-right: 1px solid #555;
 }
+
+/* Ocultar el botón de descarga */
+.no-download ::ng-deep .download-button {
+  display: none;
+}
