@@ -1,0 +1,58 @@
+<div class="card flex">
+  <p-menu [model]="items" class="flex justify-center" styleClass="w-full md:w-60">
+    <ng-template #start>
+      <span class="inline-flex items-center gap-1 px-2 py-2">
+        <svg width="33" height="35" viewBox="0 0 33 35" fill="none" xmlns="http://www.w3.org/2000/svg"
+          class="block mx-auto">
+          <path d="..." fill="var(--primary-color)" />
+        </svg>
+        <span class="text-xl font-semibold">
+          PRIME<span class="text-primary">APP</span>
+        </span>
+      </span>
+    </ng-template>
+    <ng-template #submenuheader let-item>
+      <span class="text-primary font-bold">{{ item.label }}</span>
+    </ng-template>
+    <ng-template #item let-item>
+      <a pRipple class="flex items-center p-menu-item-link">
+        <span [class]="item.icon"></span>
+        <span class="ml-2">{{ item.label }}</span>
+        @if(item.badge){
+        <p-badge class="ml-auto" [value]="item.badge" />
+        }
+        @if(item.shortcut){
+        <span class="ml-auto border border-surface rounded bg-emphasis text-muted-color text-xs p-1">
+          {{ item.shortcut }}
+        </span>
+        }
+      </a>
+    </ng-template>
+    <ng-template #end>
+      <button pRipple
+        class="relative overflow-hidden w-full border-0 bg-transparent flex items-start p-2 pl-4 hover:bg-surface-100 dark:hover:bg-surface-800 rounded-none cursor-pointer transition-colors duration-200">
+        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" class="mr-2"
+          shape="circle" />
+        <span class="inline-flex flex-col">
+          <span class="font-bold">Amy Elsner</span>
+          <span class="text-sm">Admin</span>
+        </span>
+      </button>
+    </ng-template>
+  </p-menu>
+  <p-divider layout="vertical" />
+  <p>
+    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+    eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+    voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+    voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.
+  </p>
+  <p-divider layout="vertical" />
+  <p>
+    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque
+    corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa
+    qui
+    officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita
+    distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
+  </p>
+</div>

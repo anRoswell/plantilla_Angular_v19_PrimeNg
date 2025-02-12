@@ -22,15 +22,24 @@
 <h2 class="font-bold text-xl">CodeMirror</h2>
 <app-code-editor></app-code-editor>
 
-<iframe [src]="sanitizedUrl"></iframe>
+<iframe class="m-2" [src]="sanitizedUrl"></iframe>
 
-<p-button (click)="showDialog()" label="Modal" />
+<div class="my-2">
+  <p-button (click)="showDialog()" label="Modal" class="mx-2" />
 
-<p-button (click)="showSweetAlert()" label="SweetAlert"></p-button>
+  <p-button (click)="showSweetAlert()" label="SweetAlert" class="mx-2" icon="pi pi-user"></p-button>
+
+  <p-button (click)="showModalPanelDivder()" label="Panel Divider"></p-button>
+</div>
 
 <p-dialog header="PDF" [modal]="true" [(visible)]="visible" [style]="{ width: '50%' }"
   [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" [maximizable]="true">
   <app-pdf-viewer></app-pdf-viewer>
+</p-dialog>
+
+<p-dialog header="PDF" [modal]="true" [(visible)]="panelDivide" [style]="{ width: '50%' }"
+  [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" [maximizable]="true">
+  <app-modal-panel-divider></app-modal-panel-divider>
 </p-dialog>
 
 <div class="card m-8">

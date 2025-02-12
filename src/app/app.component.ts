@@ -19,6 +19,7 @@ import { HttpClient } from '@angular/common/http';
 
 // Alert
 import Swal from 'sweetalert2';
+import { ModalPanelDividerComponent } from './modal-panel-divider/modal-panel-divider.component';
 
 @Component({
   selector: 'app-root',
@@ -31,6 +32,7 @@ import Swal from 'sweetalert2';
     Dialog,
     Editor,
     FormsModule,
+    ModalPanelDividerComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -39,6 +41,7 @@ export class AppComponent implements OnInit {
   public title = 'Inviare v2.0';
   public sanitizedUrl;
   public visible: boolean = false;
+  public panelDivide: boolean = false;
   public response: string = '';
   text: string | undefined;
 
@@ -81,5 +84,9 @@ export class AppComponent implements OnInit {
       icon: 'success',
       confirmButtonText: 'Cool',
     });
+  }
+
+  showModalPanelDivder() {
+    this.panelDivide = true;
   }
 }
