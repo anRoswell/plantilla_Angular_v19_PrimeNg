@@ -41,18 +41,119 @@
     </ng-template>
   </p-menu>
   <p-divider layout="vertical" />
-  <p>
-    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-    eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
-    voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-    voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.
-  </p>
+  <div class="card flex justify-center">
+    <p-menu [model]="items2">
+      <ng-template #item let-item>
+        @if(item.route){
+        <ng-container>
+          <a [routerLink]="item.route" class="p-menu-item-link">
+            <span [class]="item.icon"></span>
+            <span class="ml-2">{{ item.label }}</span>
+          </a>
+        </ng-container>
+        }
+        @else {
+        <ng-template>
+          <a [href]="item.url" class="p-menu-item-link">
+            <span [class]="item.icon"></span>
+            <span class="ml-2">{{ item.label }}</span>
+          </a>
+        </ng-template>
+        }
+
+      </ng-template>
+    </p-menu>
+  </div>
   <p-divider layout="vertical" />
-  <p>
-    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque
-    corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa
-    qui
-    officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita
-    distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
-  </p>
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm, $event)">
+    <p-iftalabel>
+      <p-iconfield>
+        <p-inputicon class="pi pi-user" />
+        <input pInputText ngModel #username="ngModel" name="username" required autocomplete="off"
+          [ngModelOptions]="{updateOn:'submit'}" (ngModelChange)="onEmailChange($event)" />
+      </p-iconfield>
+      <label for="username">Username</label>
+    </p-iftalabel>
+    <p-inputgroup>
+      <p-inputgroup-addon>
+        <i class="pi pi-user"></i>
+      </p-inputgroup-addon>
+      <input pInputText ngModel #address="ngModel" [ngModelOptions]="{updateOn:'blur'}" name="address"
+        placeholder="address" />
+    </p-inputgroup>
+    <div class="flex flex-col gap-2">
+      <label for="username">Password</label>
+      <input pInputText aria-describedby="username-help" class="ng-invalid ng-dirty" ngModel #password="ngModel"
+        [ngModelOptions]="{updateOn:'change', standalone:true}" name="password" minlength="8" maxlength="15" />
+      <small id="username-help">Enter your username to reset your password.</small>
+    </div>
+    <p-password [(ngModel)]="value" autocomplete="off">
+      <ng-template pTemplate="header">
+        <div class="font-semibold text-xm mb-4">Pick a password</div>
+      </ng-template>
+      <ng-template pTemplate="footer">
+        <p-divider />
+        <ul class="pl-2 ml-2 my-0 leading-normal">
+          <li>At least one lowercase</li>
+          <li>At least one uppercase</li>
+          <li>At least one numeric</li>
+          <li>Minimum 8 characters</li>
+        </ul>
+      </ng-template>
+    </p-password>
+    <div class="card flex justify-center">
+      <div class="flex flex-wrap gap-4">
+        <div class="flex items-center">
+          <p-radiobutton name="pizza" value="Cheese" [(ngModel)]="ingredient" inputId="ingredient1" />
+          <label for="ingredient1" class="ml-2">Cheese</label>
+        </div>
+
+        <div class="flex items-center">
+          <p-radiobutton name="pizza" value="Mushroom" [(ngModel)]="ingredient" inputId="ingredient2" />
+          <label for="ingredient2" class="ml-2">Mushroom</label>
+        </div>
+
+        <div class="flex items-center">
+          <p-radiobutton name="pizza" value="Pepper" [(ngModel)]="ingredient" inputId="ingredient3" />
+          <label for="ingredient3" class="ml-2">Pepper</label>
+        </div>
+
+        <div class="flex items-center">
+          <p-radiobutton name="pizza" value="Onion" [(ngModel)]="ingredient" inputId="ingredient4" />
+          <label for="ingredient4" class="ml-2">Onion</label>
+        </div>
+      </div>
+    </div>
+    <p-togglebutton ngModel #checked="ngModel" name="pizza" onLabel="On" offLabel="Off" styleClass="w-24" />
+    <span id="rememberme">Remember Me</span>
+    <p-togglebutton ariaLabelledBy="rememberme" />
+    <p-button type="submit" label="Submit" class="mt-2" styleClass="w-full" />
+  </form>
+
+  <form #otroLogin="ngForm" pFocusTrap class="w-full sm:w-80 flex flex-col gap-6">
+    <p-iconfield>
+      <p-inputicon>
+        <i class="pi pi-user"></i>
+      </p-inputicon>
+      <input type="text" pInputText ngModel #name="ngModel" name="fijo" type="text" placeholder="Name"
+        [pAutoFocus]="true" [fluid]="true" />
+    </p-iconfield>
+
+    <p-iconfield>
+      <p-inputicon>
+        <i class="pi pi-envelope"> </i>
+      </p-inputicon>
+      <input type="text" pInputText ngModel #email="ngModel" name="email" type="email" placeholder="Email"
+        [fluid]="true" />
+    </p-iconfield>
+
+    <div class="flex items-center gap-2">
+      <p-checkbox id="accept" ngModel #name="ngModel" name="accept" value="Accept" />
+      <label for="accept">I agree to the terms and conditions.</label>
+    </div>
+
+    <p-button type="submit" label="Submit" class="mt-2" styleClass="w-full" />
+  </form>
 </div>
+
+<pre>{{loginForm.value | json }}</pre>

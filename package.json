@@ -28,6 +28,7 @@
     "codemirror": "^6.0.1",
     "highlight.js": "^11.11.1",
     "ng2-pdf-viewer": "^10.4.0",
+    "ngx-doc-viewer": "^15.0.1",
     "primeicons": "^7.0.0",
     "primeng": "^18.0.2",
     "quill": "^2.0.3",
