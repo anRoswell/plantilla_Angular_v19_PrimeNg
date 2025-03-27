@@ -33,7 +33,7 @@ export class InboxComponent<T, F = any> {
   @Input() resetAfterViewInit = true;
 
   // filter
-  @Input() filters: IInboxFilter[] | null = [];
+  @Input() filters: IInboxFilter[] = [];
   @Input() valuesFilter!: F | null;
   @Output() onConsult = new EventEmitter<any>();
 

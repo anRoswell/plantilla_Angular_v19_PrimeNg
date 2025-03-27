@@ -4,18 +4,13 @@ import {
   Component,
 } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
-// import { TypeSeverity } from '@domain/models/general/IModal';
-// import { IDataPagination, IPagination } from '@domain/models/general/IPagination';
-// import { ITable, TypeColumn, TypeFormat } from '@domain/models/general/ITable';
-// import { AlertaModel } from '@domain/sgd/models/alerta.model';
-// import { SeguimientoService } from '@infrastructure/sgd/services/seguimiento/seguimiento.service';
-// import { PAGINATION_NUMBERS } from '@presentation/shared/keys/keys';
-import { Export } from './../../util/exportExcel';
 import { lastValueFrom, Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+import { Export } from './../../util/exportExcel';
 import { IDataPagination, IPagination } from '../../models/general/IPagination';
 import { TypeSeverity } from '../../models/general/IModal';
 import { ITable, TypeColumn, TypeFormat } from '../../models/general/ITable';
-import { HttpClient } from '@angular/common/http';
 import { InboxComponent } from '../../shared/components/general/inbox/inbox.component';
 import { ButtonModule } from 'primeng/button';
 import { AlertaModel } from '../../models/class/alerta.model';
@@ -34,7 +29,7 @@ export class ConsultarAlertaComponent implements AfterViewInit {
   currentPagination!: IPagination;
   tableSubject$ = new Subject<ITable>();
   dataSubject$ = new Subject<IDataPagination<AlertaModel[]>>();
-  data: IDataPagination<AlertaModel[]>;
+  data!: IDataPagination<AlertaModel[]>;
 
   // types
   typesSeverity = TypeSeverity;
