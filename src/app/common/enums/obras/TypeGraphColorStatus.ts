@@ -1,0 +1,8 @@
+export enum TypeGraphColorStatus{
+    ANULADO='#9C7B8F',
+    DEFINIDA='#088A68',
+    EN_EJECUCION='#6B8EC1',
+    EN_ELAB_REFORMADA='#FE9A2E',
+    PDTE_EJECUCION='#0489B1',
+    RECEPCIONADO = '#0174DF'
+}

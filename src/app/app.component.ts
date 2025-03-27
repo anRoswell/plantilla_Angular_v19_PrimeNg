@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, Validators } from '@angular/forms';
 
 // PrimeNG
 import { ButtonModule } from 'primeng/button';
@@ -23,6 +23,9 @@ import Swal from 'sweetalert2';
 // Visor
 import { NgxDocViewerModule } from 'ngx-doc-viewer'; // Importa el módulo
 import { ModalPanelDividerComponent } from './modal-panel-divider/modal-panel-divider.component';
+import { DynamicForm02Component } from './dynamic-form02/dynamic-form02.component';
+import { TableGenericComponent } from './shared/components/general/table-generic/table-generic.component';
+import { ITable, TypeColumn, TypeFormat } from './models/general/ITable';
 
 @Component({
   selector: 'app-root',
@@ -41,14 +44,13 @@ import { ModalPanelDividerComponent } from './modal-panel-divider/modal-panel-di
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   public title = 'Inviare v2.0';
   public sanitizedUrl;
   public visible: boolean = false;
   public panelDivide: boolean = false;
   public response: string = '';
   public text: string | undefined;
-
   public documentUrl: string;
 
   constructor(
@@ -76,14 +78,6 @@ export class AppComponent implements OnInit {
 
     this.documentUrl =
       'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf';
-  }
-
-  ngOnInit() {
-    this.httpClient
-      .get('https://jsonplaceholder.typicode.com/todos/1')
-      .subscribe((data) => {
-        this.response = JSON.stringify(data);
-      });
   }
 
   showDialog() {

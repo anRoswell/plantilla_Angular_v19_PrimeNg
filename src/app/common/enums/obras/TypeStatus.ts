@@ -1,0 +1,26 @@
+export enum TypeStatusAsegred{
+    ANULADO='TRBAN',
+    DEFINIDA='TRBDE',
+    EN_EJECUCION='TRBEJ',
+    EN_ELAB_REFORMADA='TRBER',
+    PDTE_EJECUCION='TRBPE',
+    RECEPCIONADO = 'TRBRE'
+}
+
+export enum TypeStatusDesarrollo{
+    ANULADO='TRBAN',
+    DEFINIDA='TRBDE',
+    EN_EJECUCION='TRBEJ',
+    EN_ELAB_REFORMADA='TRBER',
+    PDTE_EJECUCION='TRBPE',
+    RECEPCIONADO = 'TRBRE'
+}
+
+export enum TypeStatusMantenimiento{
+    ANULADO='TRBAN',
+    DEFINIDA='TRBDE',
+    EN_EJECUCION='TRBEJ',
+    EN_ELAB_REFORMADA='TRBER',
+    PDTE_EJECUCION='TRBPE',
+    RECEPCIONADO = 'TRBRE'
+}

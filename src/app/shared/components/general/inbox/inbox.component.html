@@ -1,0 +1,51 @@
+<!-- vista -->
+<div *ngIf="filters && table else loading" class="grid">
+  <div class="col-12" *ngIf="filters.length > 0">
+    <div class="p-card px-3 pt-3 pb-2">
+      <app-inbox-filter [filters]="filters" [values]="valuesFilter" (onConsult)="onConsultFilter($event)"
+        (closeFilters)="onCloseFilters($event)">
+      </app-inbox-filter>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="p-card px-3 pt-3 pb-2">
+      <app-table-generic [data]="data?.data ?? []" [dataSelected]="dataSelected ?? []"
+        [totalRecords]="data?.totalRecords ?? 0" [first]="data?.pagination?.first ?? 0" [table]="table"
+        [showButtonCleanFilters]="showFilterstSubject$ | async" (onSelected)="onSelectedRecords($event)"
+        (onLazyLoad)="onLazyLoadRecords($event)">
+        <ng-content></ng-content>
+      </app-table-generic>
+    </div>
+  </div>
+</div>
+
+<!-- loading -->
+<ng-template #loading>
+  <div class="grid">
+    <div class="col-12">
+      <div class="p-card pt-4 px-4">
+        <div class="grid">
+          <div class="col-3" *ngFor="let item of [].constructor(3)">
+            <p-skeleton styleClass="w-8rem h-1rem mb-2"></p-skeleton>
+            <p-skeleton styleClass="w-full h-2rem mb-2"></p-skeleton>
+          </div>
+          <div class="col-3 align-content-end">
+            <p-skeleton styleClass="w-full h-2rem mb-2"></p-skeleton>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="p-card p-3">
+        <div class="grid">
+          <div class="col-3" *ngFor="let item of [].constructor(4)">
+            <p-skeleton styleClass="w-full h-1rem"></p-skeleton>
+          </div>
+          <div class="col-3" *ngFor="let item of [].constructor(16)">
+            <p-skeleton styleClass="w-full h-2rem"></p-skeleton>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,207 @@
+@if (config && form) {
+<div class="p-fluid">
+  <p-toast></p-toast>
+
+  <p-card [header]="config.title || 'Formulario Dinámico'" styleClass="form-card">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- <div class="p-grid"> -->
+      <div class="flex flex-col gap-6 w-full sm:w-auto">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-6">
+          <!-- Campos del formulario -->
+          @for (field of fields; track $index) {
+
+          @if (field.type === 'input') {
+          <!-- Campo de tipo input -->
+          <!-- <div class="p-field"> -->
+          <div class="flex-auto">
+            <label [for]="field.name" class="block font-semibold mb-2">{{ field.label }}
+              @if (field.required) {
+              <span class="required-star">*</span>
+              }
+            </label>
+            <span class="p-input-icon-left p-fluid" [ngClass]="{'p-invalid': hasError(field.name)}">
+              @if (field.inputType === 'text' || !field.inputType) {
+              <i class="pi pi-user"></i>
+              }
+              @if (field.inputType === 'email') {
+              <i class="pi pi-envelope"></i>
+              }
+              @if (field.inputType === 'password') {
+              <i class="pi pi-lock"></i>
+              }
+              @if (field.inputType === 'tel') {
+              <i class="pi pi-phone"></i>
+              }
+              <input pInputText [type]="field.inputType || 'text'" [id]="field.name" [formControlName]="field.name"
+                [placeholder]="field.placeholder || ''" class="w-full">
+            </span>
+            @if (hasError(field.name)) {
+            <small class="p-error">{{ getErrorMessage(field) }}</small>
+            }
+          </div>
+          }
+
+          @if(field.type === 'textarea'){
+          <!-- Campo de tipo textarea -->
+          <div class="p-field">
+            <label [for]="field.name">{{ field.label }}
+              @if (field.required) {
+              <span class="required-star">*</span>
+              }
+            </label>
+            <textarea pInputTextarea [id]="field.name" [formControlName]="field.name"
+              [placeholder]="field.placeholder || ''" [rows]="5" [ngClass]="{'p-invalid': hasError(field.name)}">
+               </textarea>
+
+            @if (hasError(field.name)) {
+            <small class="p-error">{{ getErrorMessage(field) }}</small>
+            }
+          </div>
+          }
+
+          @if (field.type === 'dropdown') {
+          <!-- Campo de tipo dropdown (select) -->
+          <div class="p-field">
+            <label [for]="field.name">{{ field.label }}
+              @if (field.required) {
+              <span class="required-star">*</span>
+              }
+            </label>
+            <p-dropdown [id]="field.name" [formControlName]="field.name" [options]="field.options" optionLabel="label"
+              optionValue="value" [placeholder]="field.placeholder || 'Seleccione una opción'"
+              [showClear]="!field.required" [ngClass]="{'p-invalid': hasError(field.name)}"
+              styleClass="w-full"></p-dropdown>
+            @if (hasError(field.name)) {
+            <small class="p-error">{{ getErrorMessage(field) }}</small>
+            }
+          </div>
+          }
+
+          @if (field.type === 'checkbox') {
+          <!-- Campo de tipo checkbox -->
+          <div class="p-field-checkbox">
+            <p-checkbox [formControlName]="field.name" [binary]="true" [id]="field.name"
+              [ngClass]="{'p-invalid': hasError(field.name)}"></p-checkbox>
+            <label [for]="field.name" class="p-checkbox-label">
+              {{ field.label }}
+              @if(field.required){
+              <span class="required-star">*</span>
+              }
+            </label>
+            <div>
+              @if (hasError(field.name)) {
+              <small class="p-error">{{ getErrorMessage(field) }}</small>
+              }
+            </div>
+          </div>
+          }
+
+          @if (field.type === 'radio') {
+          <!-- Campo de tipo radio button -->
+          <div class="p-field">
+            <label>{{ field.label }}
+              @if (field.required) {
+              <span class="required-star">*</span>
+              }
+            </label>
+            <div class="p-formgroup-inline">
+              @for (option of field.options; track $index) {
+              <div class="p-field-radiobutton">
+                <p-radioButton [formControlName]="field.name" [value]="option.value"
+                  [id]="field.name + '-' + option.value"
+                  [ngClass]="{'p-invalid': hasError(field.name)}"></p-radioButton>
+                <label [for]="field.name + '-' + option.value">{{ option.label }}</label>
+              </div>
+
+              }
+            </div>
+            @if (hasError(field.name)) {
+            <small class="p-error">{{ getErrorMessage(field) }}</small>
+            }
+          </div>
+          }
+
+          @if (field.type === 'calendar') {
+          <!-- Campo de tipo calendar -->
+          <div class="p-field">
+            <label [for]="field.name">{{ field.label }}
+              @if (field.required) {
+              <span class="required-star">*</span>
+              }
+            </label>
+            <p-calendar [id]="field.name" [formControlName]="field.name" [showIcon]="true" [showButtonBar]="true"
+              [placeholder]="field.placeholder || ''" dateFormat="dd/mm/yy"
+              [ngClass]="{'p-invalid': hasError(field.name)}" styleClass="w-full"></p-calendar>
+            @if (hasError(field.name)) {
+            <small class="p-error">{{ getErrorMessage(field) }}</small>
+            }
+          </div>
+          }
+
+          @if (field.type === 'inputNumber') {
+          <!-- Campo de tipo inputNumber -->
+          <div class="p-field">
+            <label [for]="field.name">{{ field.label }}
+              @if (field.required) {
+              <span class="required-star">*</span>
+              }
+            </label>
+            <p-inputNumber [id]="field.name" [formControlName]="field.name" [placeholder]="field.placeholder || ''"
+              [showButtons]="true" [ngClass]="{'p-invalid': hasError(field.name)}" styleClass="w-full"></p-inputNumber>
+            @if (hasError(field.name)) {
+            <small class="p-error">{{ getErrorMessage(field) }}</small>
+            }
+          </div>
+          }
+
+          @if (field.type === 'multiselect') {
+          <!-- Campo de tipo multiselect -->
+          <div class="p-field">
+            <label [for]="field.name">{{ field.label }}
+              @if (field.required) {
+              <span class="required-star">*</span>
+              }
+            </label>
+            <p-multiSelect [id]="field.name" [formControlName]="field.name" [options]="field.options"
+              optionLabel="label" optionValue="value" [placeholder]="field.placeholder || 'Seleccione opciones'"
+              [ngClass]="{'p-invalid': hasError(field.name)}" styleClass="w-full">
+            </p-multiSelect>
+
+            @if (hasError(field.name)) {
+            <small class="p-error">{{ getErrorMessage(field) }}</small>
+            }
+          </div>
+          }
+
+          @if (field.type === 'inputSwitch') {
+          <!-- Campo de tipo inputSwitch -->
+          <div class="p-field p-field-checkbox">
+            <p-inputSwitch [formControlName]="field.name" [id]="field.name"
+              [ngClass]="{'p-invalid': hasError(field.name)}"></p-inputSwitch>
+            <label [for]="field.name" class="p-checkbox-label">
+              {{ field.label }}
+              @if (field.required) {
+              <span class="required-star">*</span>
+              }
+            </label>
+            <div>
+              @if (hasError(field.name)) {
+              <small class="p-error">{{ getErrorMessage(field) }}</small>
+              }
+            </div>
+          </div>
+          }
+
+          }
+        </div>
+      </div>
+
+      <div class="p-d-flex p-jc-end p-mt-3">
+        <p-button type="submit" [label]="config.submitLabel || 'Guardar'" icon="pi pi-save"
+          styleClass="p-button-primary"></p-button>
+      </div>
+    </form>
+  </p-card>
+</div>
+
+}

@@ -1,0 +1,7 @@
+export enum TypeOrderState{
+    PENDIENTE = 'SPEN',
+    ASIGNADA_TECNICO = 'SEAS',
+    ASIGNADA_CONTRATISTA = 'SASI',
+    COMPROMETIDA_TECNICO = 'SCOM',
+    EN_ANALISIS = 'SBAN'
+}

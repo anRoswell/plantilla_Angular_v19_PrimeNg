@@ -1,0 +1,17 @@
+<div class="p-panel flex flex-column">
+    <div class="flex-0">
+        <div class="grid m-2">
+            <div class="col-12">
+                <app-inbox (onConsult)="onConsult($event)" [table]="(tableSubject$ | async)"
+                    [data]="(dataSubject$ | async)" (onLazyLoad)="onLoadRecords($event)">
+                    <p-button (click)="onExportSelectedExcel()"
+                        badge="{{ (dataSubject$ | async)?.data?.length ?? '0' }}"
+                        styleClass="ml-1 mt-1 bg-primary border-primary span-p-badge-primary"
+                        [disabled]="((dataSubject$ | async)?.data?.length ?? 0) === 0">
+                        {{ textButtonExportSelectedExcel }}
+                    </p-button>
+                </app-inbox>
+            </div>
+        </div>
+    </div>
+</div>

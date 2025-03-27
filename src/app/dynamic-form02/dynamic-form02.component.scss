@@ -1,0 +1,24 @@
+:host ::ng-deep {
+  .form-card {
+    margin-bottom: 2rem;
+  }
+
+  .required-star {
+    color: red;
+  }
+
+  .p-inputtext,
+  .p-dropdown,
+  .p-multiselect {
+    width: 100%;
+  }
+
+  .p-field {
+    margin-bottom: 1.5rem;
+  }
+
+  .p-field-checkbox {
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+  }
+}
