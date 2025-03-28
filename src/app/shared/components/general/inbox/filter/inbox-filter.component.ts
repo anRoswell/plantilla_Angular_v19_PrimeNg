@@ -22,12 +22,31 @@ import { IInboxFilter } from '../../../../../models/general/IInboxFilter';
 import { TypeItemList } from '../../../../../common/enums/general/TypeItemList';
 import { TypeCalendar } from '../../../../../common/enums/general/TypeCalendar';
 import { TypeControl } from '../../../../../common/enums/general/TypeControl';
+// angular
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// PrimeNG
+import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { InputTextModule } from 'primeng/inputtext';
+import { CalendarModule } from 'primeng/calendar';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-inbox-filter',
-  templateUrl: './inbox-filter.component.html',
   standalone: true,
+  templateUrl: './inbox-filter.component.html',
   styleUrls: ['./inbox-filter.component.scss'],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    DropdownModule,
+    MultiSelectModule,
+    InputTextModule,
+    CalendarModule,
+    ButtonModule
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('openClose', [
@@ -67,7 +86,7 @@ export class InboxFilterComponent<T> {
   filterHidden: IInboxFilter[] = [];
   filterNotHidden: IInboxFilter[] = [];
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     const group: any = {};
@@ -200,9 +219,9 @@ export class InboxFilterComponent<T> {
       // check integridad de filtros
       if (
         (filter.actionChangeTo.length ?? 0) ===
-          (filter.actionChangeToField?.length ?? 0) &&
+        (filter.actionChangeToField?.length ?? 0) &&
         (filter.actionChangeToField?.length ?? 0) ===
-          (filter.actionChangeToOptionFilter?.length ?? 0) &&
+        (filter.actionChangeToOptionFilter?.length ?? 0) &&
         filter.actionChangeTo!.length > 0
       ) {
         filter!.actionChangeTo.forEach((value: string, index: number) => {
@@ -250,8 +269,8 @@ export class InboxFilterComponent<T> {
     if (filterTo?.name && actionChangeToField) {
       const selectItems = actionChangeToOptionFilter
         ? filter?.list?.filter((item) =>
-            values.find((value) => item[filter.optionValue!] === value)
-          ) ?? []
+          values.find((value) => item[filter.optionValue!] === value)
+        ) ?? []
         : [];
 
       const selectFilter =
@@ -261,10 +280,10 @@ export class InboxFilterComponent<T> {
             return selectItems.find((select: any) =>
               item[actionChangeToField] instanceof Array
                 ? item[actionChangeToField]?.includes(
-                    select[actionChangeToOptionFilter]
-                  )
-                : item[actionChangeToField] ===
                   select[actionChangeToOptionFilter]
+                )
+                : item[actionChangeToField] ===
+                select[actionChangeToOptionFilter]
             );
           } else {
             // busqueda por valores

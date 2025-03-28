@@ -14,6 +14,7 @@ import { ITable, TypeColumn, TypeFormat } from '../../models/general/ITable';
 import { InboxComponent } from '../../shared/components/general/inbox/inbox.component';
 import { ButtonModule } from 'primeng/button';
 import { AlertaModel } from '../../models/class/alerta.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-consultar-alerta',
@@ -34,7 +35,7 @@ export class ConsultarAlertaComponent implements AfterViewInit {
   // types
   typesSeverity = TypeSeverity;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -146,13 +147,65 @@ export class ConsultarAlertaComponent implements AfterViewInit {
   // funciones
   async onLoadRecords(event?: any) {
     this.currentPagination = event;
-    this.data = await lastValueFrom(this.http.get<any>('data.json'));
+    console.log(event);
+    switch (event.rows) {
+      case 5:
+        this.data = await lastValueFrom(this.http.get<any>('data.json'));
+        break;
+      case 10:
+        this.data = await lastValueFrom(this.http.get<any>('data02.json'));
+        break;
+      case 15:
+        this.data = await lastValueFrom(this.http.get<any>('data03.json'));
+        break;
+      case 20:
+        this.data = await lastValueFrom(this.http.get<any>('data04.json'));
+        break;
+    }
+    // this.data = await lastValueFrom(this.http.get<any>('data.json'));
     this.dataSubject$.next(this.data);
+    console.log('Pagination Object:', this.currentPagination);
+
   }
 
   onConsult(event: any) {
     this.onLoadRecords();
   }
+
+  // async onLoadRecords(event?: any) {
+  //   this.currentPagination = event;
+
+  //   // Parámetros de la tabla
+  //   const page = event ? (event.first / event.rows) + 1 : 1; // Número de página
+  //   const pageSize = event ? event.rows : 10; // Cantidad de registros por página
+  //   const sortField = event?.sortField || 'idAlerta'; // Campo para ordenar
+  //   const sortOrder = event?.sortOrder === 1 ? 'asc' : 'desc'; // Dirección del orden
+  //   const filters = event?.filters || {}; // Filtros aplicados
+
+  //   try {
+  //     // Llamada real al backend
+  //     const response = await lastValueFrom(
+  //       this.http.get<IDataPagination<AlertaModel[]>>(`/api/alertas`, {
+  //         params: {
+  //           page: page.toString(),
+  //           pageSize: pageSize.toString(),
+  //           sortField,
+  //           sortOrder,
+  //           ...filters // Pasar filtros como query params
+  //         }
+  //       })
+  //     );
+
+  //     if (response && response.data) {
+  //       this.data = response; // Guardar los datos devueltos por el backend
+  //       this.dataSubject$.next(this.data); // Emitir para actualizar la tabla
+  //       console.log(`Mostrando página ${page}: ${response.data.length} registros.`);
+  //     }
+  //   } catch (error) {
+  //     console.error('Error cargando los datos:', error);
+  //   }
+  // }
+
   //#endregion
 
   //#region buttons

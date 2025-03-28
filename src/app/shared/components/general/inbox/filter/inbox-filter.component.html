@@ -1,103 +1,58 @@
 <form [formGroup]="form" class="grid">
   <div [@openClose]="isCloseFilters ? 'closed' : 'open'" class="col-12 px-2 pt-0 pb-2">
-    <div *ngFor="let filter of filterHidden">
-      <div *ngIf="filter.typeControl === typesControl.HIDDEN">
-        <input 
-          type="hidden"          
-          [id]="filter.name"
-          [formControlName]="filter.name"
-        />
-      </div>
-    </div>
+    @for ( filter of filterHidden; track $index) {
+    @if (filter.typeControl === typesControl.HIDDEN) {
+    <input type="hidden" [id]="filter.name" [formControlName]="filter.name" />
+    }
+    }
     <div [style]="{ 'display': isCloseFilters ? 'none' : 'flex' }" class="grid">
       <!-- controles no ocultos        -->
-      <div class="px-2 pt-2 pb-0" *ngFor="let filter of filterNotHidden" [ngClass]="getColumnClass(filterNotHidden.length)">
+      @for (filter of filterNotHidden; track $index) {
+      <div class="px-2 pt-2 pb-0" [ngClass]="getColumnClass(filterNotHidden.length)">
         <label [htmlFor]="filter.name">{{ filter.label }}</label>
         <div [ngSwitch]="filter.typeControl">
           <div *ngSwitchCase="typesControl.DROPDOWN">
-            <p-dropdown
-              [id]="filter.name"
-              styleClass="w-full"
-              [formControlName]="filter.name"
-              [options]="filter.selectedlist"
-              [optionLabel]="filter.optionLabel"
-              [optionValue]="filter.optionValue"
-              [placeholder]="filter.placeholder ?? filter.label"
-              [filter]="true"
-              [showClear]="true"
-              [filterBy]="filter.optionLabel"
-              [virtualScroll]="true"
-              [virtualScrollItemSize]="30"
-              (onChange)="onSelectUnique($event, filter)"
-            ></p-dropdown>
+            <p-dropdown [id]="filter.name" styleClass="w-full" [formControlName]="filter.name"
+              [options]="filter.selectedlist" [optionLabel]="filter.optionLabel" [optionValue]="filter.optionValue"
+              [placeholder]="filter.placeholder ?? filter.label" [filter]="true" [showClear]="true"
+              [filterBy]="filter.optionLabel" [virtualScroll]="true" [virtualScrollItemSize]="30"
+              (onChange)="onSelectUnique($event, filter)"></p-dropdown>
           </div>
           <div *ngSwitchCase="typesControl.MULTI_SELECT">
-            <p-multiSelect
-              [id]="filter.name"
-              styleClass="w-full flex-auto white-space-nowrap"
-              [formControlName]="filter.name"
-              [options]="filter.selectedlist"
-              [optionLabel]="filter.optionLabel"
-              [optionValue]="filter.optionValue"
-              [placeholder]="filter?.placeholder ?? filter.label"
-              [showToggleAll]="true"
-              [selectAll]="isSelectAll"
-              [showClear]="true"
-              [maxSelectedLabels]="1"
-              [virtualScroll]="true"
-              [virtualScrollItemSize]="30"
-              (onSelectAllChange)="onSelectAllChange($event, filter)"
-              (onChange)="onSelectMulti($event, filter)" 
-              (onClear)="onClear()"                
-            ></p-multiSelect>
+            <p-multiSelect [id]="filter.name" styleClass="w-full flex-auto white-space-nowrap"
+              [formControlName]="filter.name" [options]="filter.selectedlist" [optionLabel]="filter.optionLabel"
+              [optionValue]="filter.optionValue" [placeholder]="filter?.placeholder ?? filter.label"
+              [showToggleAll]="true" [selectAll]="isSelectAll" [showClear]="true" [maxSelectedLabels]="1"
+              [virtualScroll]="true" [virtualScrollItemSize]="30"
+              (onSelectAllChange)="onSelectAllChange($event, filter)" (onChange)="onSelectMulti($event, filter)"
+              (onClear)="onClear()"></p-multiSelect>
           </div>
           <div *ngSwitchCase="typesControl.INPUT">
-            <input
-              pInputText
-              type="text"
-              [id]="filter.name"                
-              [formControlName]="filter.name"
-              [placeholder]="filter?.placeholder ?? filter.label"
-              [value]="filter.value"
-              class="w-full"
-            />
+            <input pInputText type="text" [id]="filter.name" [formControlName]="filter.name"
+              [placeholder]="filter?.placeholder ?? filter.label" [value]="filter.value" class="w-full" />
           </div>
           <div *ngSwitchCase="typesControl.CALENDAR">
-            <p-calendar
-              [id]="filter.name"
-              styleClass="w-full"
-              [formControlName]="filter.name"
-              [placeholder]="filter?.placeholder ?? filter.label"
-              [minDate]="filter.minDate ?? minDate" 
-              [maxDate]="filter.maxDate ?? maxDate" 
-              [readonlyInput]="true"
-              [showClear]="true"
-              [selectionMode]="filter.typeCalendar ?? typesCalendar.SINGLE"
-            ></p-calendar>
+            <p-calendar [id]="filter.name" styleClass="w-full" [formControlName]="filter.name"
+              [placeholder]="filter?.placeholder ?? filter.label" [minDate]="filter.minDate ?? minDate"
+              [maxDate]="filter.maxDate ?? maxDate" [readonlyInput]="true" [showClear]="true"
+              [selectionMode]="filter.typeCalendar ?? typesCalendar.SINGLE"></p-calendar>
           </div>
-        </div>          
+        </div>
       </div>
+      }
     </div>
   </div>
   <div class="col-12 px-2 pt-0 pb-1">
     <div class="flex justify-content-between">
       <div class="flex p-0 m-0 align-items-center justify-content-center">
-        <p-button 
-          [icon]="isCloseFilters ? 'pi pi-chevron-down' : 'pi pi-chevron-up'"
-          styleClass="bg-white border-400 text-600 button-custom-table-generic"
-          (onClick)="onCloseFilters()">
+        <p-button [icon]="isCloseFilters ? 'pi pi-chevron-down' : 'pi pi-chevron-up'"
+          styleClass="bg-white border-400 text-600 button-custom-table-generic" (onClick)="onCloseFilters()">
         </p-button>
         <p class="pl-2 m-0 font-semibold"> Parámetros de consulta</p>
       </div>
 
-      <p-button
-        id="filter-button"
-        (click)="onConsultFilter()"
-        [style]="{ 'border-radius': '3px' }"
-        [disabled]="form.invalid"
-        severity="bg-primary"
-        label="Consultar"
-      ></p-button>
+      <p-button id="filter-button" (click)="onConsultFilter()" [style]="{ 'border-radius': '3px' }"
+        [disabled]="form.invalid" severity="primary" label="Consultar"></p-button>
     </div>
   </div>
 </form>
