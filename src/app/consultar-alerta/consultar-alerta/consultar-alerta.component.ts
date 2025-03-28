@@ -14,6 +14,7 @@ import { ITable, TypeColumn, TypeFormat } from '../../models/general/ITable';
 import { InboxComponent } from '../../shared/components/general/inbox/inbox.component';
 import { ButtonModule } from 'primeng/button';
 import { AlertaModel } from '../../models/class/alerta.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-consultar-alerta',
@@ -34,7 +35,7 @@ export class ConsultarAlertaComponent implements AfterViewInit {
   // types
   typesSeverity = TypeSeverity;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -52,6 +53,11 @@ export class ConsultarAlertaComponent implements AfterViewInit {
       rowsPerPageOptions: [5, 10, 15, 20], // this.gosModuleOrdenesService.rowsPerPageOptions,
       lazyLoadOnInit: true,
       columns: [
+        {
+          field: 'idAlerta',
+          label: '',
+          type: TypeColumn.MULTI_SELECT
+        },
         {
           field: 'idAlerta',
           label: 'Id Alerta',
@@ -137,6 +143,13 @@ export class ConsultarAlertaComponent implements AfterViewInit {
           sort: true,
           format: TypeFormat.CAPITALIZE,
         },
+        {
+          field: 'acciones',
+          label: 'Acciones',
+          type: TypeColumn.ACTION,
+          icon: 'pi-eye',
+
+        }
       ],
     };
 
@@ -146,13 +159,31 @@ export class ConsultarAlertaComponent implements AfterViewInit {
   // funciones
   async onLoadRecords(event?: any) {
     this.currentPagination = event;
-    this.data = await lastValueFrom(this.http.get<any>('data.json'));
+    console.log(event);
+    switch (event.rows) {
+      case 5:
+        this.data = await lastValueFrom(this.http.get<any>('data.json'));
+        break;
+      case 10:
+        this.data = await lastValueFrom(this.http.get<any>('data02.json'));
+        break;
+      case 15:
+        this.data = await lastValueFrom(this.http.get<any>('data03.json'));
+        break;
+      case 20:
+        this.data = await lastValueFrom(this.http.get<any>('data04.json'));
+        break;
+    }
+    // this.data = await lastValueFrom(this.http.get<any>('data.json'));
     this.dataSubject$.next(this.data);
+    console.log('Pagination Object:', this.currentPagination);
+
   }
 
   onConsult(event: any) {
     this.onLoadRecords();
   }
+
   //#endregion
 
   //#region buttons

@@ -44,7 +44,8 @@ export class TableGenericComponent<T> implements OnInit, AfterViewInit {
   @Input() fixHeight = 0;
   @Input() totalRecords = 0;
   @Input() first = 0;
-  @Input() showButtonCleanFilters = true;
+  // @Input() showButtonCleanFilters = true;
+  @Input() showButtonCleanFilters: boolean = true;
   @Output() onLazyLoad = new EventEmitter<any>();
   @Output() onSelected = new EventEmitter<any>();
 
@@ -102,8 +103,10 @@ export class TableGenericComponent<T> implements OnInit, AfterViewInit {
   onSelectedRecords(event?: any | undefined) {
     if (event instanceof Array) {
       this.onSelected.emit(event);
+      console.log("Registros seleccionados:", event);
     } else {
       this.onSelected.emit([event]);
+      console.log("Registro seleccionado:", event);
     }
   }
 

@@ -4,5 +4,5 @@ import { ConsultarAlertaComponent } from './consultar-alerta/consultar-alerta/co
 
 export const routes: Routes = [
   { path: 'crudForm', component: DynamicCrudComponent },
-  { path: 'ConsultarAlerta', component: ConsultarAlertaComponent },
+  { path: 'consultarAlerta', component: ConsultarAlertaComponent },
 ];

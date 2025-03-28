@@ -16,15 +16,16 @@ import { InboxFilterComponent } from './filter/inbox-filter.component';
 
 // Component
 import { TableGenericComponent } from '../table-generic/table-generic.component';
-
+import { CommonModule } from '@angular/common';
 import { SkeletonModule } from 'primeng/skeleton';
 
 @Component({
   selector: 'app-inbox',
+  standalone: true,
   templateUrl: './inbox.component.html',
   styleUrls: ['./inbox.component.scss'],
-  standalone: true,
   imports: [
+    CommonModule,
     TableGenericComponent,
     SkeletonModule,
     InboxFilterComponent,
@@ -38,11 +39,11 @@ export class InboxComponent<T, F = any> {
 
   // filter
   @Input() filters: IInboxFilter[] = [];
-  @Input() valuesFilter!: F | null;
+  @Input() valuesFilter: F | null = null;
   @Output() onConsult = new EventEmitter<any>();
-
   closeFilters = false;
   showFilterstSubject$ = new Subject<boolean>();
+
 
   onConsultFilter(event?: any | undefined) {
     this.onConsult.emit(event);
@@ -54,17 +55,18 @@ export class InboxComponent<T, F = any> {
   }
 
   // table
-  @Input() table!: ITable;
-  @Input() data!: IDataPagination<T>;
-  @Input() dataSelected!: T[] | null;
+  @Input() table: ITable | null = null;
+  @Input() data: IDataPagination<T> | null = null;
+  @Input() dataSelected: T[] | null = null;
   @Output() onLazyLoad = new EventEmitter<any>();
   @Output() onSelected = new EventEmitter<any>();
 
-  onLazyLoadRecords(event?: any | undefined) {
+  onLazyLoadRecords(event?: any) {
     this.onLazyLoad.emit(event);
   }
 
-  onSelectedRecords(event?: any | undefined) {
+  onSelectedRecords(event?: any) {
     this.onSelected.emit(event);
   }
+
 }
