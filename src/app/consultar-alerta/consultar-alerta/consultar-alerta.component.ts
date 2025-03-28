@@ -55,6 +55,11 @@ export class ConsultarAlertaComponent implements AfterViewInit {
       columns: [
         {
           field: 'idAlerta',
+          label: '',
+          type: TypeColumn.MULTI_SELECT
+        },
+        {
+          field: 'idAlerta',
           label: 'Id Alerta',
           type: TypeColumn.NUMBER,
           filter: true,
@@ -138,6 +143,13 @@ export class ConsultarAlertaComponent implements AfterViewInit {
           sort: true,
           format: TypeFormat.CAPITALIZE,
         },
+        {
+          field: 'acciones',
+          label: 'Acciones',
+          type: TypeColumn.ACTION,
+          icon: 'pi-eye',
+
+        }
       ],
     };
 
@@ -171,40 +183,6 @@ export class ConsultarAlertaComponent implements AfterViewInit {
   onConsult(event: any) {
     this.onLoadRecords();
   }
-
-  // async onLoadRecords(event?: any) {
-  //   this.currentPagination = event;
-
-  //   // Parámetros de la tabla
-  //   const page = event ? (event.first / event.rows) + 1 : 1; // Número de página
-  //   const pageSize = event ? event.rows : 10; // Cantidad de registros por página
-  //   const sortField = event?.sortField || 'idAlerta'; // Campo para ordenar
-  //   const sortOrder = event?.sortOrder === 1 ? 'asc' : 'desc'; // Dirección del orden
-  //   const filters = event?.filters || {}; // Filtros aplicados
-
-  //   try {
-  //     // Llamada real al backend
-  //     const response = await lastValueFrom(
-  //       this.http.get<IDataPagination<AlertaModel[]>>(`/api/alertas`, {
-  //         params: {
-  //           page: page.toString(),
-  //           pageSize: pageSize.toString(),
-  //           sortField,
-  //           sortOrder,
-  //           ...filters // Pasar filtros como query params
-  //         }
-  //       })
-  //     );
-
-  //     if (response && response.data) {
-  //       this.data = response; // Guardar los datos devueltos por el backend
-  //       this.dataSubject$.next(this.data); // Emitir para actualizar la tabla
-  //       console.log(`Mostrando página ${page}: ${response.data.length} registros.`);
-  //     }
-  //   } catch (error) {
-  //     console.error('Error cargando los datos:', error);
-  //   }
-  // }
 
   //#endregion
 

@@ -103,8 +103,10 @@ export class TableGenericComponent<T> implements OnInit, AfterViewInit {
   onSelectedRecords(event?: any | undefined) {
     if (event instanceof Array) {
       this.onSelected.emit(event);
+      console.log("Registros seleccionados:", event);
     } else {
       this.onSelected.emit([event]);
+      console.log("Registro seleccionado:", event);
     }
   }
 
