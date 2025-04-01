@@ -47,77 +47,73 @@ export class ConsultarAlertaComponent implements AfterViewInit {
   // config
   setTable() {
     const table: ITable = {
-      fieldId: 'idAlerta', // aqui se define el id de los datos
+      fieldId: 'cod', // aqui se define el id de los datos
       paginator: true,
       //rowsPerPageOptions: PAGINATION_NUMBERS, // this.gosModuleOrdenesService.rowsPerPageOptions,
       rowsPerPageOptions: [5, 10, 15, 20], // this.gosModuleOrdenesService.rowsPerPageOptions,
       lazyLoadOnInit: true,
       columns: [
         {
-          field: 'idAlerta',
+          field: 'cod',
           label: '',
           type: TypeColumn.MULTI_SELECT
         },
         {
-          field: 'idAlerta',
-          label: 'Id Alerta',
+          field: 'cod',
+          label: 'Código',
           type: TypeColumn.NUMBER,
           filter: true,
           sort: true,
         },
         {
-          field: 'tipoAlerta',
-          label: 'Tipo Alerta',
-          type: TypeColumn.STRING,
-          filter: true,
-          sort: true,
-          format: TypeFormat.UPPERCASE,
-        },
-        {
-          field: 'vehiculo',
-          label: 'Vehiculo',
-          type: TypeColumn.STRING,
-          filter: true,
-          sort: true,
-          format: TypeFormat.UPPERCASE,
-        },
-        {
-          field: 'imei',
-          label: 'IMEI',
-          type: TypeColumn.STRING,
-          filter: true,
-          sort: true,
-          format: TypeFormat.UPPERCASE,
-        },
-        {
-          field: 'valorAlerta',
-          label: 'Velocidad',
+          field: 'emp',
+          label: 'Emp',
           type: TypeColumn.NUMBER,
           filter: true,
           sort: true,
         },
         {
-          field: 'imei_Supervisor',
-          label: 'IMEI Supervisor',
-          type: TypeColumn.STRING,
+          field: 'proceso',
+          label: 'Proceso',
+          type: TypeColumn.TRUNCATE_TEXT,
           filter: true,
           sort: true,
           format: TypeFormat.UPPERCASE,
         },
         {
-          field: 'distanciaCalculada',
-          label: 'Distancia',
+          field: 'paso',
+          label: 'Paso',
+          type: TypeColumn.TRUNCATE_TEXT,
+          filter: true,
+          sort: true,
+        },
+        {
+          field: 'perfil',
+          label: 'Perfil',
           type: TypeColumn.NUMBER,
-          filter: false,
+          filter: true,
           sort: true,
         },
         {
-          field: 'descripcion',
-          label: 'Descripción',
-          type: TypeColumn.STRING,
+          field: 'flujo',
+          label: 'Flujo',
+          type: TypeColumn.NUMBER,
           filter: true,
           sort: true,
-          format: TypeFormat.UPPERCASE,
+        },
+        {
+          field: 'ruta',
+          label: 'Ruta',
+          type: TypeColumn.NUMBER,
+          filter: true,
+          sort: true,
+        },
+        {
+          field: 'tipdoc',
+          label: 'Tipo Documento',
+          type: TypeColumn.TRUNCATE_TEXT,
+          filter: true,
+          sort: true,
         },
         {
           field: 'estado',
@@ -128,27 +124,63 @@ export class ConsultarAlertaComponent implements AfterViewInit {
           format: TypeFormat.UPPERCASE,
         },
         {
-          field: 'fechaRegistro',
-          label: 'Fecha Registro',
+          field: 'fecha_cargue',
+          label: 'Fecha Cargue',
           type: TypeColumn.DATE,
           filter: true,
           sort: true,
           format: TypeFormat.DATETIME,
         },
         {
-          field: 'ciudad',
-          label: 'Ciudad',
+          field: 'fecha_doc',
+          label: 'Fecha Doc',
+          type: TypeColumn.DATE,
+          filter: true,
+          sort: true,
+          format: TypeFormat.DATETIME,
+        },
+        {
+          field: 'observacion',
+          label: 'Observación',
+          type: TypeColumn.TRUNCATE_TEXT,
+          filter: true,
+          sort: true,
+          format: TypeFormat.TRUNCATE_TEXT,
+        },
+        {
+          field: 'valor',
+          label: 'Valor',
+          type: TypeColumn.NUMBER,
+          filter: true,
+          sort: true,
+        },
+        {
+          field: 'proveedor',
+          label: 'Proveedor',
+          type: TypeColumn.STRING,
+          filter: true,
+          sort: true,
+        },
+        {
+          field: 'codigo',
+          label: 'Codigo',
           type: TypeColumn.STRING,
           filter: true,
           sort: true,
           format: TypeFormat.CAPITALIZE,
         },
         {
+          field: 'fact',
+          label: 'Fact',
+          type: TypeColumn.STRING,
+          filter: true,
+          sort: true,
+        },
+        {
           field: 'acciones',
           label: 'Acciones',
           type: TypeColumn.ACTION,
-          icon: 'pi-eye',
-
+          icon: 'pi-cog',
         }
       ],
     };
@@ -190,5 +222,13 @@ export class ConsultarAlertaComponent implements AfterViewInit {
   onExportSelectedExcel() {
     Export.Excel(this.data.data as any, 'Reporte_Alertas.xlsx');
   }
+
   //#endregion
+
+
+  // funciones record
+  onDownloadActaPdf(event: any, btn: any) {
+    console.log(event);
+    console.log(btn);
+  }
 }

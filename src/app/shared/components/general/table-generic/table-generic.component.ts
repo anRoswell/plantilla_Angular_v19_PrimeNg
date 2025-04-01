@@ -9,6 +9,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { format } from 'date-fns';
+import { FormsModule } from '@angular/forms';
 
 //PrimeNG
 import { MultiSelect, MultiSelectModule } from 'primeng/multiselect';
@@ -31,7 +32,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './table-generic.component.html',
   styleUrls: ['./table-generic.component.scss'],
   standalone: true,
-  imports: [TableModule, MultiSelectModule, ButtonModule, CommonModule],
+  imports: [TableModule, MultiSelectModule, ButtonModule, CommonModule, FormsModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableGenericComponent<T> implements OnInit, AfterViewInit {
@@ -75,6 +76,11 @@ export class TableGenericComponent<T> implements OnInit, AfterViewInit {
       this.setOrderColumns();
       this.updateSelectColumn(true, this.table.columns);
     }, 50);
+  }
+
+  /** Inicializa las columnas visibles por defecto */
+  initializeColumns() {
+    this.selectColumns = [...this.table.columns];
   }
 
   ngAfterViewInit() {
@@ -151,6 +157,8 @@ export class TableGenericComponent<T> implements OnInit, AfterViewInit {
   //#region select columns
   onSelectMulti(event: any) {
     this.updateSelectColumn(false, event.value);
+    this.selectColumns = [...event.value];
+    console.log('Columnas seleccionadas:', this.selectColumns);
   }
 
   onSelectAllChange(event: any) {
