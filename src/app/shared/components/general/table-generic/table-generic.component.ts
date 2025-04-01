@@ -13,7 +13,12 @@ import { FormsModule } from '@angular/forms';
 
 //PrimeNG
 import { MultiSelect, MultiSelectModule } from 'primeng/multiselect';
-import { Table, TableModule } from 'primeng/table';
+import {
+  Table,
+  TableModule,
+  TableRowSelectEvent,
+  TableRowUnSelectEvent,
+} from 'primeng/table';
 
 //
 import { TypeFormatDate } from '../../../../common/enums/general/TypeFormatDate';
@@ -32,7 +37,13 @@ import { CommonModule } from '@angular/common';
   templateUrl: './table-generic.component.html',
   styleUrls: ['./table-generic.component.scss'],
   standalone: true,
-  imports: [TableModule, MultiSelectModule, ButtonModule, CommonModule, FormsModule],
+  imports: [
+    TableModule,
+    MultiSelectModule,
+    ButtonModule,
+    CommonModule,
+    FormsModule,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableGenericComponent<T> implements OnInit, AfterViewInit {
@@ -53,6 +64,7 @@ export class TableGenericComponent<T> implements OnInit, AfterViewInit {
   @ViewChild('dtTableGeneric') dataTable!: Table;
   @ViewChild('multiselectColumns') multiSelectColumns!: MultiSelect;
 
+  loading: boolean = true;
   topHtmlTableForHeight = 247;
   adjustHeight = 130; // header + nav + tab)
   matchModeOptions = [
@@ -76,30 +88,10 @@ export class TableGenericComponent<T> implements OnInit, AfterViewInit {
       this.setOrderColumns();
       this.updateSelectColumn(true, this.table.columns);
     }, 50);
+    this.loading = false;
   }
 
-  /** Inicializa las columnas visibles por defecto */
-  initializeColumns() {
-    this.selectColumns = [...this.table.columns];
-  }
-
-  ngAfterViewInit() {
-    // setTimeout(() => {
-    //   this.calcScrollHeight();
-    //   this.setOrderColumns();
-    //   this.updateSelectColumn(true, this.table.columns);
-    // }, 50);
-  }
-
-  // ngAfterViewInit(): void {
-  //   console.log(this.data);
-  //   console.log(this.table);
-  //   setTimeout(() => {
-  //     this.calcScrollHeight();
-  //     this.setOrderColumns();
-  //     this.updateSelectColumn(true, this.table.columns);
-  //   }, 50);
-  // }
+  ngAfterViewInit(): void {}
 
   onLazyLoadRecords(event?: any | undefined) {
     this.searchExecuted = true;
@@ -109,10 +101,10 @@ export class TableGenericComponent<T> implements OnInit, AfterViewInit {
   onSelectedRecords(event?: any | undefined) {
     if (event instanceof Array) {
       this.onSelected.emit(event);
-      console.log("Registros seleccionados:", event);
+      console.log('[onSelectedRecords] Registros seleccionados:', event);
     } else {
       this.onSelected.emit([event]);
-      console.log("Registro seleccionado:", event);
+      console.log('[onSelectedRecords] Registro seleccionado:', event);
     }
   }
 
@@ -195,4 +187,8 @@ export class TableGenericComponent<T> implements OnInit, AfterViewInit {
     });
   }
   //#endregion
+
+  exportFunction() {
+    console.log('exportFunction');
+  }
 }

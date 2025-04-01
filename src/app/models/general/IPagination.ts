@@ -1,4 +1,4 @@
-import { TypeSort } from "../../common/enums/general/TypeSort";
+import { TypeSort } from '../../common/enums/general/TypeSort';
 
 export interface IDataPagination<T, U = any> {
   data?: T[];
@@ -25,6 +25,7 @@ export interface IFilter {
 export interface IFilters {
   nameField: IFilter[];
 }
+
 export interface IBotonera {
   action: (data: any) => void;
 }
