@@ -94,8 +94,7 @@
         @case (typesColumns.ACTION) {
         <div [class]="col.field && record[col.field] ? 'cursor-pointer' : 'cursor-not-allowed'">
           <p-button icon="pi {{ col.icon }}" [rounded]="true" [text]="true" severity="info"
-            [disabled]="col.field && record[col.field] ? false : true" (onClick)="col?.action(record)">
-
+            [disabled]="col.field && record[col.field] ? false : true" (onClick)="col?.action(record, null)">
           </p-button>
         </div>
         }
@@ -103,6 +102,15 @@
         <div>
           @if (col.field) {
           <div class="hidden">
+            {{ record[col.field] }}
+          </div>
+          }
+        </div>
+        }
+        @case (typesColumns.TRUNCATE_TEXT) {
+        <div>
+          @if (col.field) {
+          <div class="w-40 truncate">
             {{ record[col.field] }}
           </div>
           }
@@ -173,17 +181,18 @@
 
 
 <p-table #dtTableGeneric [value]="data" [selection]="dataSelected" (selectionChange)="onSelectedRecords($event)"
-  [dataKey]="table.fieldId" [responsive]="false" [rowHover]="true"
+  [dataKey]="table.fieldId" [responsive]="true" [rowHover]="true"
   [rows]="table.rowsPerPageOptions ? table.rowsPerPageOptions[0] : 0" [showCurrentPageReport]="true"
   [lazy]="!(table.isDataLocal ?? false)" [lazyLoadOnInit]="table.lazyLoadOnInit ?? false"
   (onLazyLoad)="onLazyLoadRecords($event)" [totalRecords]="totalRecords" [rowsPerPageOptions]="table.rowsPerPageOptions"
   [paginator]="table.paginator" currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} totales"
-  [filterDelay]="0" [scrollable]="false" [first]="first" [tableStyle]="{'width': width ? width + 'width' : 'auto' }"
-  paginatorDropdownAppendTo="body" [rowTrackBy]="trackByFunction" class="p-0 m-0 border-collapse w-full">
+  [filterDelay]="0" [scrollable]="true" [first]="first" [tableStyle]="{'width': width ? width + 'width' : 'auto' }"
+  paginatorDropdownAppendTo="body" [rowTrackBy]="trackByFunction" class="p-0 m-0 border-collapse w-full"
+  [styleClass]="'p-datatable-sm'">
   <ng-template #header>
     <tr>
       @for (col of selectColumns; track $index) {
-      <th class="px-2 py-1 text-sm">
+      <th class="px-2 py-1 text-sm w-40">
         <!-- select all -->
         @if (col.type === typesColumns.MULTI_SELECT) {
         <div>
@@ -264,17 +273,33 @@
         </div>
         }
         @case (typesColumns.ACTION) {
-        <div [class]="col.field && record[col.field] ? 'cursor-pointer' : 'cursor-not-allowed'">
-          <p-button icon="pi {{ col.icon }}" [rounded]="true" [text]="true" severity="info"
-            [disabled]="col.field && record[col.field] ? false : true" (onClick)="col?.action(record)">
-          </p-button>
-        </div>
+        <!-- {{ record['acciones']['botonera'] | json }} -->
+        <div class="flex py-0 px-0 custom-icon-size">
+          @for (btn of record['acciones']['botonera']; track $index) {
 
+          <!-- <button type="button" [disabled]="col.field && record[col.field] ? false : true"
+              (onClick)="col?.action(record, btn)">b</button> -->
+          <p-button [rounded]="true" [text]="true" severity="info"
+            [disabled]="col.field && record[col.field] ? false : true" (onClick)="col?.action(record, btn)"
+            class="text-xs" styleClass="p-button-sm p-button-text p-button-icon-only"><i class="pi {{ btn.icon }}"
+              style="color: #0fe728"></i>
+          </p-button>
+          }
+        </div>
         }
         @case (typesColumns.HIDDEN) {
         <div>
           @if (col.field) {
-          <div class="hidden">
+          <div class=" hidden">
+            {{ record[col.field] }}
+          </div>
+          }
+        </div>
+        }
+        @case (typesColumns.TRUNCATE_TEXT) {
+        <div>
+          @if (col.field) {
+          <div class="w-40 truncate">
             {{ record[col.field] }}
           </div>
           }
@@ -301,22 +326,22 @@
             </div>
             }
             @case(typesFormat.DATE){
-            <div>
+            <div class="w-40">
               {{ formatDate(record[col.field], typesFormatDate.API) }}
             </div>
             }
             @case(typesFormat.DATETIME){
-            <div>
+            <div class="w-40">
               {{ formatDate(record[col.field], typesFormatDate.API_DATETIME) }}
             </div>
             }
             @case(typesFormat.TIME){
-            <div>
+            <div class="w-40">
               {{ formatDate(record[col.field], typesFormatDate.API_TIME) }}
             </div>
             }
             @case(typesFormat.TIME_HMS){
-            <div>
+            <div class="w-40">
               {{ formatDate(record[col.field], typesFormatDate.API_TIME_HMS) }}
             </div>
             }

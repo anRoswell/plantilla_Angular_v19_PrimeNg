@@ -35,7 +35,7 @@ export class ConsultarAlertaComponent implements AfterViewInit {
   // types
   typesSeverity = TypeSeverity;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -56,11 +56,11 @@ export class ConsultarAlertaComponent implements AfterViewInit {
         {
           field: 'idAlerta',
           label: '',
-          type: TypeColumn.MULTI_SELECT
+          type: TypeColumn.MULTI_SELECT,
         },
         {
           field: 'idAlerta',
-          label: 'Id Alerta',
+          label: 'Id',
           type: TypeColumn.NUMBER,
           filter: true,
           sort: true,
@@ -114,7 +114,7 @@ export class ConsultarAlertaComponent implements AfterViewInit {
         {
           field: 'descripcion',
           label: 'Descripción',
-          type: TypeColumn.STRING,
+          type: TypeColumn.TRUNCATE_TEXT,
           filter: true,
           sort: true,
           format: TypeFormat.UPPERCASE,
@@ -148,8 +148,9 @@ export class ConsultarAlertaComponent implements AfterViewInit {
           label: 'Acciones',
           type: TypeColumn.ACTION,
           icon: 'pi-eye',
-
-        }
+          action: (rowData: any, btn: any) =>
+            this.onDownloadActaPdf(rowData, btn),
+        },
       ],
     };
 
@@ -159,7 +160,7 @@ export class ConsultarAlertaComponent implements AfterViewInit {
   // funciones
   async onLoadRecords(event?: any) {
     this.currentPagination = event;
-    console.log(event);
+
     switch (event.rows) {
       case 5:
         this.data = await lastValueFrom(this.http.get<any>('data.json'));
@@ -177,7 +178,6 @@ export class ConsultarAlertaComponent implements AfterViewInit {
     // this.data = await lastValueFrom(this.http.get<any>('data.json'));
     this.dataSubject$.next(this.data);
     console.log('Pagination Object:', this.currentPagination);
-
   }
 
   onConsult(event: any) {
@@ -191,4 +191,10 @@ export class ConsultarAlertaComponent implements AfterViewInit {
     Export.Excel(this.data.data as any, 'Reporte_Alertas.xlsx');
   }
   //#endregion
+
+  // funciones record
+  onDownloadActaPdf(event: any, btn: any) {
+    console.log(event);
+    console.log(btn);
+  }
 }

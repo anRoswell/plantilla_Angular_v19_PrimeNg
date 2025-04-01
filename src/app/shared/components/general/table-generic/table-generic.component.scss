@@ -1,5 +1,9 @@
 ::ng-deep .button-custom-table-generic {
-    height: 32px;
-    width: 32px;
-    border-radius: 10px;
+  height: 32px;
+  width: 32px;
+  border-radius: 10px;
+}
+
+.custom-icon-size .p-button-icon {
+  font-size: 0.25rem !important; /* Tamaño personalizado */
 }

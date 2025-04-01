@@ -17,7 +17,7 @@ export interface IColumn {
   type?: TypeColumn;
   filter?: boolean;
   sort?: boolean;
-  action?: (data: any) => void;
+  action?: (data: any, bnt: any) => void;
   icon?: string;
   format?: TypeFormat;
   order?: number;
@@ -33,6 +33,7 @@ export enum TypeColumn {
   ACTION = 'action',
   HIDDEN = 'hidden',
   TAG = 'tag',
+  TRUNCATE_TEXT = 'truncate',
   MULTI_SELECT = TypeSelectionModeTable.MULTIPLE,
   SINGLE_SELECT = TypeSelectionModeTable.SINGLE,
 }
@@ -43,6 +44,7 @@ export enum TypeFormat {
   CAPITALIZE = 'capitalize',
   DATE = 'date',
   DATETIME = 'datetime',
+  TRUNCATE_TEXT = 'truncate',
   TIME = 'time',
   TIME_HMS = 'time_hms',
 }

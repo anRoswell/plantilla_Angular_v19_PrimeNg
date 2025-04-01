@@ -1,3 +1,5 @@
+import { IBotonera } from '../general/IPagination';
+
 export class AlertaModel {
   constructor(
     public tipoAlerta: string = '',
@@ -10,5 +12,6 @@ export class AlertaModel {
     public latVehiculo: number = 0,
     public lonVehiculo: number = 0,
     public fechaRegistro: string = ''
-  ) {}
+  ) // public acciones: (data: any) => void
+  {}
 }
