@@ -20,9 +20,62 @@
         "codigo": "FE001",
         "fact": "FE001",
         "acciones": {
-          "icon": "pi-pencil",
-          "action": "editar"
-        }
+        "icon": "",
+        "action": "ver",
+         "botonera": [
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-file-pdf",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-search",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-pencil",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-thumbs-up",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-trash",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-eye",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-times",
+            "exec": ""
+          },
+
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sync",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-bolt",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sitemap",
+            "exec": ""
+          }
+        ]
+      }
       },
       {
         "cod": 413999,
@@ -41,10 +94,63 @@
         "proveedor": "800201710",
         "codigo": "FE002",
         "fact": "FEC104",
-        "acciones": {
-          "icon": "pi-eye",
-          "action": "ver"
-        }
+         "acciones": {
+        "icon": "",
+        "action": "ver",
+         "botonera": [
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-file-pdf",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-search",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-pencil",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-thumbs-up",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-trash",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-eye",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-times",
+            "exec": ""
+          },
+
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sync",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-bolt",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sitemap",
+            "exec": ""
+          }
+        ]
+      }
       },
       {
         "cod": 414002,
@@ -63,10 +169,63 @@
         "proveedor": "800201710",
         "codigo": "FE003",
         "fact": "FE 115",
-        "acciones": {
-          "icon": "pi-trash",
-          "action": "eliminar"
-        }
+         "acciones": {
+        "icon": "",
+        "action": "ver",
+         "botonera": [
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-file-pdf",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-search",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-pencil",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-thumbs-up",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-trash",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-eye",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-times",
+            "exec": ""
+          },
+
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sync",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-bolt",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sitemap",
+            "exec": ""
+          }
+        ]
+      }
       },
       {
         "cod": 414003,
@@ -85,10 +244,63 @@
         "proveedor": "800201710",
         "codigo": "FE004",
         "fact": "FE 115",
-        "acciones": {
-          "icon": "pi-trash",
-          "action": "eliminar"
-        }
+         "acciones": {
+        "icon": "",
+        "action": "ver",
+         "botonera": [
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-file-pdf",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-search",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-pencil",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-thumbs-up",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-trash",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-eye",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-times",
+            "exec": ""
+          },
+
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sync",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-bolt",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sitemap",
+            "exec": ""
+          }
+        ]
+      }
       },
       {
         "cod": 414004,
@@ -107,10 +319,63 @@
         "proveedor": "800201710",
         "codigo": "FE005",
         "fact": "FE 115",
-        "acciones": {
-          "icon": "pi-trash",
-          "action": "eliminar"
-        }
+         "acciones": {
+        "icon": "",
+        "action": "ver",
+         "botonera": [
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-file-pdf",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-search",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-pencil",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-thumbs-up",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-trash",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-eye",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-times",
+            "exec": ""
+          },
+
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sync",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-bolt",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sitemap",
+            "exec": ""
+          }
+        ]
+      }
       },
       {
         "cod": 414005,
@@ -129,10 +394,63 @@
         "proveedor": "800201710",
         "codigo": "FE006",
         "fact": "FE 115",
-        "acciones": {
-          "icon": "pi-trash",
-          "action": "eliminar"
-        }
+         "acciones": {
+        "icon": "",
+        "action": "ver",
+         "botonera": [
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-file-pdf",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-search",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-pencil",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-thumbs-up",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-trash",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-eye",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-times",
+            "exec": ""
+          },
+
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sync",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-bolt",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sitemap",
+            "exec": ""
+          }
+        ]
+      }
       },
       {
         "cod": 414006,
@@ -151,10 +469,63 @@
         "proveedor": "800201710",
         "codigo": "FE007",
         "fact": "FE 115",
-        "acciones": {
-          "icon": "pi-trash",
-          "action": "eliminar"
-        }
+         "acciones": {
+        "icon": "",
+        "action": "ver",
+         "botonera": [
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-file-pdf",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-search",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-pencil",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-thumbs-up",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-trash",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-eye",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-times",
+            "exec": ""
+          },
+
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sync",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-bolt",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sitemap",
+            "exec": ""
+          }
+        ]
+      }
       },
       {
         "cod": 414007,
@@ -173,10 +544,63 @@
         "proveedor": "800201710",
         "codigo": "FE008",
         "fact": "FE 115",
-        "acciones": {
-          "icon": "pi-trash",
-          "action": "eliminar"
-        }
+         "acciones": {
+        "icon": "",
+        "action": "ver",
+         "botonera": [
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-file-pdf",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-search",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-pencil",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-thumbs-up",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-trash",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-eye",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-times",
+            "exec": ""
+          },
+
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sync",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-bolt",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sitemap",
+            "exec": ""
+          }
+        ]
+      }
       },
       {
         "cod": 414008,
@@ -195,10 +619,63 @@
         "proveedor": "800201710",
         "codigo": "FE009",
         "fact": "FE 115",
-        "acciones": {
-          "icon": "pi-trash",
-          "action": "eliminar"
-        }
+         "acciones": {
+        "icon": "",
+        "action": "ver",
+         "botonera": [
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-file-pdf",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-search",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-pencil",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-thumbs-up",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-trash",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-eye",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-times",
+            "exec": ""
+          },
+
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sync",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-bolt",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sitemap",
+            "exec": ""
+          }
+        ]
+      }
       },
       {
       "cod": 414009,
@@ -217,11 +694,63 @@
       "proveedor": "800201710",
       "codigo": "FE010",
       "fact": "FE 115",
-      "acciones": {
-        "icon": "pi-trash",
-        "action": "eliminar"
-      }
+        "acciones": {
+        "icon": "",
+        "action": "ver",
+         "botonera": [
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-file-pdf",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-search",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-pencil",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-thumbs-up",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-trash",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-eye",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-times",
+            "exec": ""
+          },
 
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sync",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-bolt",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sitemap",
+            "exec": ""
+          }
+        ]
+      }
       },
       {
       "cod": 414010,
@@ -240,9 +769,62 @@
       "proveedor": "800201710",
       "codigo": "FE011",
       "fact": "FE 115",
-      "acciones": {
-        "icon": "pi-trash",
-        "action": "eliminar"
+       "acciones": {
+        "icon": "",
+        "action": "ver",
+         "botonera": [
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-file-pdf",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-search",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-pencil",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-thumbs-up",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-trash",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-eye",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-times",
+            "exec": ""
+          },
+
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sync",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-bolt",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sitemap",
+            "exec": ""
+          }
+        ]
       }
       },
       {
@@ -262,10 +844,63 @@
         "proveedor": "800201710",
         "codigo": "FE012",
         "fact": "FE 115",
-        "acciones": {
-          "icon": "pi-trash",
-          "action": "eliminar"
-        }
+         "acciones": {
+        "icon": "",
+        "action": "ver",
+         "botonera": [
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-file-pdf",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-search",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-pencil",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-thumbs-up",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-trash",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-eye",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-times",
+            "exec": ""
+          },
+
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sync",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-bolt",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sitemap",
+            "exec": ""
+          }
+        ]
+      }
       },
       {
         "cod": 414012,
@@ -284,10 +919,63 @@
         "proveedor": "800201710",
         "codigo": "FE013",
         "fact": "FE 115",
-        "acciones": {
-          "icon": "pi-trash",
-          "action": "eliminar"
-        }
+         "acciones": {
+        "icon": "",
+        "action": "ver",
+         "botonera": [
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-file-pdf",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-search",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-pencil",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-thumbs-up",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-trash",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-eye",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-times",
+            "exec": ""
+          },
+
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sync",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-bolt",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sitemap",
+            "exec": ""
+          }
+        ]
+      }
       },
       {
         "cod": 414013,
@@ -306,10 +994,63 @@
         "proveedor": "800201710",
         "codigo": "FE014",
         "fact": "FE 115",
-        "acciones": {
-          "icon": "pi-trash",
-          "action": "eliminar"
-        }
+         "acciones": {
+        "icon": "",
+        "action": "ver",
+         "botonera": [
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-file-pdf",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-search",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-pencil",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-thumbs-up",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-trash",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-eye",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-times",
+            "exec": ""
+          },
+
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sync",
+            "exec": ""
+          },
+           {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-bolt",
+            "exec": ""
+          },
+          {
+            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
+            "icon": "pi-sitemap",
+            "exec": ""
+          }
+        ]
+      }
       }
     ],
     "meta": {

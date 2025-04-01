@@ -8,7 +8,8 @@
     <div [style]="{ 'display': isCloseFilters ? 'none' : 'flex' }" class="grid">
       <!-- controles no ocultos        -->
       @for (filter of filterNotHidden; track $index) {
-      <div class="px-2 pt-2 pb-0" [ngClass]="getColumnClass(filterNotHidden.length)">
+      <div class="col-3 px-2 pt-2 pb-0">
+        <!-- <div class="px-2 pt-2 pb-0" [ngClass]="getColumnClass(filterNotHidden.length)"> -->
         <label [htmlFor]="filter.name">{{ filter.label }}</label>
         <div [ngSwitch]="filter.typeControl">
           <div *ngSwitchCase="typesControl.DROPDOWN">

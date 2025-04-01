@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
+  output,
 } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { lastValueFrom, Subject } from 'rxjs';
@@ -35,7 +36,7 @@ export class ConsultarAlertaComponent implements AfterViewInit {
   // types
   typesSeverity = TypeSeverity;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -59,8 +60,8 @@ export class ConsultarAlertaComponent implements AfterViewInit {
           type: TypeColumn.MULTI_SELECT,
         },
         {
-          field: 'idAlerta',
-          label: 'Id',
+          field: 'cod',
+          label: 'Cod',
           type: TypeColumn.NUMBER,
           filter: true,
           sort: true,
@@ -109,8 +110,8 @@ export class ConsultarAlertaComponent implements AfterViewInit {
           sort: true,
         },
         {
-          field: 'descripcion',
-          label: 'Descripción',
+          field: 'tipdoc',
+          label: 'TipDoc',
           type: TypeColumn.TRUNCATE_TEXT,
           filter: true,
           sort: true,
@@ -180,7 +181,6 @@ export class ConsultarAlertaComponent implements AfterViewInit {
           field: 'acciones',
           label: 'Acciones',
           type: TypeColumn.ACTION,
-          icon: 'pi-eye',
           action: (rowData: any, btn: any) =>
             this.onDownloadActaPdf(rowData, btn),
         },
