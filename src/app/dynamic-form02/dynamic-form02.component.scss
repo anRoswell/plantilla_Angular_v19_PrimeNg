@@ -22,3 +22,16 @@
     margin-top: 1.5rem;
   }
 }
+
+/* Estilos para el file upload */
+.p-fileupload-content .p-progressbar {
+  @apply h-1;
+}
+
+.p-fileupload-buttonbar {
+  @apply bg-white border border-gray-300 rounded-t-md p-2;
+}
+
+.p-fileupload-content {
+  @apply border border-gray-300 border-t-0 rounded-b-md p-4;
+}
