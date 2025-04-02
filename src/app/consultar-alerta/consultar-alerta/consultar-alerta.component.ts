@@ -7,7 +7,6 @@ import {
 import { AsyncPipe } from '@angular/common';
 import { lastValueFrom, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-
 import { Export } from './../../util/exportExcel';
 import { IDataPagination, IPagination } from '../../models/general/IPagination';
 import { TypeSeverity } from '../../models/general/IModal';
@@ -16,13 +15,15 @@ import { InboxComponent } from '../../shared/components/general/inbox/inbox.comp
 import { ButtonModule } from 'primeng/button';
 import { AlertaModel } from '../../models/class/alerta.model';
 import { BehaviorSubject } from 'rxjs';
+import { ViewChild } from '@angular/core';
+import { ModalTablaComponent } from "../../shared/components/general/modal-tabla/modal-tabla.component";
 
 @Component({
   selector: 'app-consultar-alerta',
   templateUrl: './consultar-alerta.component.html',
   styleUrls: ['./consultar-alerta.component.scss'],
   standalone: true,
-  imports: [InboxComponent, ButtonModule, AsyncPipe],
+  imports: [InboxComponent, ButtonModule, AsyncPipe, ModalTablaComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConsultarAlertaComponent implements AfterViewInit {
@@ -32,7 +33,7 @@ export class ConsultarAlertaComponent implements AfterViewInit {
   tableSubject$ = new Subject<ITable>();
   dataSubject$ = new Subject<IDataPagination<AlertaModel[]>>();
   data!: IDataPagination<AlertaModel[]>;
-
+  @ViewChild(ModalTablaComponent) modalTabla!: ModalTablaComponent;
   // types
   typesSeverity = TypeSeverity;
 
@@ -63,15 +64,15 @@ export class ConsultarAlertaComponent implements AfterViewInit {
           field: 'cod',
           label: 'Cod',
           type: TypeColumn.NUMBER,
-          filter: true,
-          sort: true,
+          filter: false,
+          sort: false,
         },
         {
           field: 'emp',
           label: 'Emp',
           type: TypeColumn.NUMBER,
           filter: true,
-          sort: true,
+          sort: false,
         },
         {
           field: 'proceso',
@@ -92,22 +93,22 @@ export class ConsultarAlertaComponent implements AfterViewInit {
           field: 'perfil',
           label: 'Perfil',
           type: TypeColumn.NUMBER,
-          filter: true,
-          sort: true,
+          filter: false,
+          sort: false,
         },
         {
           field: 'flujo',
           label: 'Flujo',
           type: TypeColumn.NUMBER,
-          filter: true,
-          sort: true,
+          filter: false,
+          sort: false,
         },
         {
           field: 'ruta',
           label: 'Ruta',
           type: TypeColumn.NUMBER,
-          filter: true,
-          sort: true,
+          filter: false,
+          sort: false,
         },
         {
           field: 'tipdoc',
@@ -121,7 +122,7 @@ export class ConsultarAlertaComponent implements AfterViewInit {
           label: 'Estado',
           type: TypeColumn.STRING,
           filter: true,
-          sort: true,
+          sort: false,
           format: TypeFormat.UPPERCASE,
         },
         {
@@ -137,15 +138,15 @@ export class ConsultarAlertaComponent implements AfterViewInit {
           label: 'Fecha Doc',
           type: TypeColumn.DATE,
           filter: true,
-          sort: true,
+          sort: false,
           format: TypeFormat.DATETIME,
         },
         {
           field: 'observacion',
           label: 'Observación',
           type: TypeColumn.TRUNCATE_TEXT,
-          filter: true,
-          sort: true,
+          filter: false,
+          sort: false,
           format: TypeFormat.TRUNCATE_TEXT,
         },
         {
@@ -160,14 +161,14 @@ export class ConsultarAlertaComponent implements AfterViewInit {
           label: 'Proveedor',
           type: TypeColumn.STRING,
           filter: true,
-          sort: true,
+          sort: false,
         },
         {
           field: 'codigo',
-          label: 'Codigo',
+          label: 'Código Ref',
           type: TypeColumn.STRING,
           filter: true,
-          sort: true,
+          sort: false,
           format: TypeFormat.CAPITALIZE,
         },
         {
@@ -175,14 +176,13 @@ export class ConsultarAlertaComponent implements AfterViewInit {
           label: 'Fact',
           type: TypeColumn.STRING,
           filter: true,
-          sort: true,
+          sort: false,
         },
         {
           field: 'acciones',
           label: 'Acciones',
           type: TypeColumn.ACTION,
-          action: (rowData: any, btn: any) =>
-            this.onDownloadActaPdf(rowData, btn),
+          action: (rowData: any, btn: any) => this.handleAction(rowData, btn),
         },
       ],
     };
@@ -226,9 +226,57 @@ export class ConsultarAlertaComponent implements AfterViewInit {
 
   //#endregion
 
-  // funciones record
-  onDownloadActaPdf(event: any, btn: any) {
-    console.log(event);
-    console.log(btn);
+  //#region Actions
+  handleAction(record: any, btn: any) {
+    console.log('Ejecutando acción:', btn.exec);
+    console.log('Registro:', record);
+
+    switch (btn.exec) {
+      case 'openPDF':
+        console.log('Abriendo PDF para:', record);
+        // this.downloadPdf(record);
+        break;
+
+      case 'check':
+        if (event) {
+          record.isCheckedAction = (event.target as HTMLInputElement).checked;
+          console.log('Se ha seleccionado el check de la tabla acciones en ConsultarAlertaComponent:', record.isCheckedAction);
+        }
+        break;
+
+      case 'otroModal':
+        console.log('Abriendo otroModal:', record);
+        // this.openModal(record);
+        break;
+
+      case 'modalTable':
+        console.log('Mostrando Modal Table para:', record);
+        if (this.modalTabla) {
+          this.modalTabla.openModal(record); // ASII SI ME Muestra el modal correctamente
+        } else {
+          console.warn('modalTabla no está inicializado aún.');
+        }
+        break;
+
+      default:
+        console.warn('Acción desconocida:', btn.exec);
+    }
   }
+
+  // toggleActionCheck(record: any, event: any) {
+  //   record.isCheckedAction = event.target.checked;
+  //   console.log("AAAAA", record);
+  // }
+
+  // downloadPdf(record: any) {
+  //   console.log('Descargando Acta PDF para:', record);
+  //   // Implementación real de descarga
+  // }
+
+  // openModal(record: any) {
+  //   console.log('Abriendo modal para:', record);
+  //   // Implementación real de abrir modal
+  // }
+
+  //#endregion
 }

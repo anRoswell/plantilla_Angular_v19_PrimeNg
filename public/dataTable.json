@@ -1,0 +1,31 @@
+{
+  "status": 200,
+  "mensaje": "Consulta exitosa.",
+  "data": [
+    {
+      "cod": 413981,
+      "emp": 58,
+      "proceso": "[2411] (4867)-FLUJO FACTURACION-YSYP",
+      "paso": "(984)-APROBAR DOCUMENTOS CONTABLES"
+    },
+     {
+      "cod": 413982,
+      "emp": 58,
+      "proceso": "[2411] (4867)-FLUJO FACTURACION-YSYP",
+      "paso": "(984)-APROBAR DOCUMENTOS CONTABLES"
+    },
+    {
+      "cod": 413983,
+      "emp": 58,
+      "proceso": "[2411] (4867)-FLUJO FACTURACION-YSYP",
+      "paso": "(984)-APROBAR DOCUMENTOS CONTABLES"
+    },
+    {
+      "cod": 413984,
+      "emp": 58,
+      "proceso": "[2411] (4867)-FLUJO FACTURACION-YSYP",
+      "paso": "(984)-APROBAR DOCUMENTOS CONTABLES"
+    }
+  ],
+  "totalRecords": 2
+}

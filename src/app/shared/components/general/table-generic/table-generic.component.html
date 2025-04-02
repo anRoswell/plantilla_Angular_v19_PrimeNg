@@ -1,79 +1,71 @@
-<div class="flex justify-between items-center mb-2">
-  <!-- Botón de filtro de columnas -->
-  <p-multiSelect #multiselectColumns [options]="table.columns" [(ngModel)]="selectColumns" optionLabel="label"
-    defaultLabel="Seleccionar columnas" [showToggleAll]="true" [maxSelectedLabels]="3" appendTo="body"
-    (onChange)="onSelectMulti($event)"></p-multiSelect>
-
-  <!-- Botón para limpiar filtros -->
-  <p-button icon="pi pi-filter-slash" styleClass="p-button-outlined p-button-secondary" label="Limpiar filtros"
-    (click)="onResetFilters()">
-  </p-button>
-</div>
-
-<p-table #dtTableGeneric [value]="data" [selection]="dataSelected" (selectionChange)="onSelectedRecords($event)"
-  [dataKey]="table.fieldId" [responsive]="false" [rowHover]="true"
+<p-table #dtTableGeneric showGridlines [value]="data" [selection]="dataSelected"
+  (selectionChange)="onSelectedRecords($event)" [dataKey]="table.fieldId" [responsive]="true" [rowHover]="true"
   [rows]="table.rowsPerPageOptions ? table.rowsPerPageOptions[0] : 0" [showCurrentPageReport]="true"
   [lazy]="!(table.isDataLocal ?? false)" [lazyLoadOnInit]="table.lazyLoadOnInit ?? false"
   (onLazyLoad)="onLazyLoadRecords($event)" [totalRecords]="totalRecords" [rowsPerPageOptions]="table.rowsPerPageOptions"
   [paginator]="table.paginator" currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} totales"
-  [filterDelay]="0" [scrollable]="true" [first]="first" [tableStyle]="{'width': width ? width + 'width' : 'auto' }"
-  paginatorDropdownAppendTo="body" [rowTrackBy]="trackByFunction">
+  [filterDelay]="0" [scrollable]="true" [first]="first" [tableStyle]="{'width': width ? width + 'width' : '100%' }"
+  paginatorDropdownAppendTo="body" [rowTrackBy]="trackByFunction" scrollHeight="200px"
+  styleClass="text-center p-datatable-sm p-0">
 
   <ng-template #header>
     <tr>
-
       @for (col of selectColumns; track $index) {
-      <th class='flex-auto white-space-nowrap'>
-        <!-- select all -->
-        @if (col.type === typesColumns.MULTI_SELECT) {
-        <div>
-          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-        </div>
-        }
+      <th class="px-0.5 py-0 text-xxs bg-white sticky top-0 z-10 text-center w-min">
+        <div class="flex flex-col items-center">
+          <!-- select all -->
+          @if (col.type === typesColumns.MULTI_SELECT) {
+          <div>
+            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+          </div>
+          }
 
-        @if ((col.sort ?? false) && col.type !== typesColumns.HIDDEN) {
-        <!-- ordenamiento -->
-        <div [pSortableColumn]="col.field">
-          <p-sortIcon [field]="col.field">
-          </p-sortIcon>
-          {{ col.label }}
-          @if (col.filter ?? false) {
-          <p-columnFilter [type]="col.type ?? typesColumns.STRING" [field]="col.field" display="menu" class="ml-auto"
-            [showButtons]="false"
-            [matchModeOptions]="col.type === typesColumns.DATE ? [matchModeOptions[1]] : matchModeOptions"
-            [matchMode]="matchModeOptions[0].value" [showMatchModes]="true" [showOperator]="false"
-            [showAddButton]="false">
-          </p-columnFilter>
+          <!-- ordenamiento -->
+          @if ((col.sort ?? false) && col.type !== typesColumns.HIDDEN) {
+          <div [pSortableColumn]="col.field" class="flex items-center gap-0.5">
+            <p-sortIcon [field]="col.field" class="text-gray-500">
+            </p-sortIcon>
+            {{ col.label }}
+            @if (col.filter ?? false) {
+            <p-columnFilter [type]="col.type ?? typesColumns.STRING" [field]="col.field" display="menu"
+              [showButtons]="false" class="ml-auto text-gray-500"
+              [matchModeOptions]="col.type === typesColumns.DATE ? [matchModeOptions[1]] : matchModeOptions"
+              [matchMode]="matchModeOptions[0].value" [showMatchModes]="true" [showOperator]="false"
+              [showAddButton]="false">
+            </p-columnFilter>
+
+            }
+          </div>
+          }
+
+          <!-- filtro -->
+          @if (!col.sort && col.type !== typesColumns.HIDDEN) {
+          <div class="flex items-center gap-0.4">
+            {{ col.label }}
+            @if (col.filter ?? false) {
+            <p-columnFilter [type]="col.type ?? typesColumns.STRING" [field]="col.field" display="menu"
+              [showButtons]="false" class="ml-auto text-gray-500"
+              [matchModeOptions]="col.type === typesColumns.DATE ? [matchModeOptions[1]] : matchModeOptions"
+              [matchMode]="matchModeOptions[0].value" [showMatchModes]="true" [showOperator]="false"
+              [showAddButton]="false">
+            </p-columnFilter>
+            }
+          </div>
           }
         </div>
-        }
-
-        @if (!col.sort && col.type !== typesColumns.HIDDEN) {
-        <!-- filtro -->
-        <div>
-          {{ col.label }}
-          @if (col.filter ?? false) {
-          <p-columnFilter [type]="col.type ?? typesColumns.STRING" [field]="col.field" display="menu" class="ml-auto"
-            [showButtons]="false"
-            [matchModeOptions]="col.type === typesColumns.DATE ? [matchModeOptions[1]] : matchModeOptions"
-            [matchMode]="matchModeOptions[0].value" [showMatchModes]="true" [showOperator]="false"
-            [showAddButton]="false">
-          </p-columnFilter>
-          }
-        </div>
-        }
       </th>
       }
     </tr>
   </ng-template>
+
 
   <ng-template #caption>
     <!-- pendiente recibir mas acciones -->
     <div class="flex overflow-hidden">
       @if (showButtonCleanFilters) {
       <div class="flex-none flex justify-content-start">
-        <p-button icon="pi pi-filter-slash" styleClass="bg-white border-400 text-600 button-custom-table-generic"
-          (click)="onResetFilters()"></p-button>
+        <p-button icon="pi pi-filter-slash" [rounded]="true" severity="secondary" [outlined]="true"
+          styleClass="border-400 text-600 ml-1 button-custom-table-generic" (click)="onResetFilters()"></p-button>
         <p-multiSelect #multiselectColumns [options]="table.columns" [showToggleAll]="true" [selectAll]="isSelectAll"
           styleClass="border-400 text-600 ml-1 button-custom-table-generic" dropdownIcon="pi pi-list"
           optionLabel="label" appendTo="body" [maxSelectedLabels]="1" (onSelectAllChange)="onSelectAllChange($event)"
@@ -81,197 +73,19 @@
         </p-multiSelect>
       </div>
       }
-      <div class="flex-grow-1 flex justify-content-end">
+      <div class="flex-grow flex justify-end">
         <ng-content></ng-content>
       </div>
     </div>
   </ng-template>
 
-  <ng-template #body style="width: 100%;" let-record>
-    <tr>
 
-      @for (col of selectColumns; track $index) {
-      <td class='flex-auto white-space-nowrap'>
-        @switch (col.type) {
-        @case (typesColumns.MULTI_SELECT) {
-        <div>
-          <p-tableCheckbox [value]="record"></p-tableCheckbox>
-        </div>
-        }
-        @case (typesColumns.SINGLE_SELECT) {
-        <div>
-          <p-tableRadioButton [value]="record"></p-tableRadioButton>
-        </div>
-        }
-        @case (typesColumns.ACTION) {
-        <div [class]="col.field && record[col.field] ? 'cursor-pointer' : 'cursor-not-allowed'">
-          <p-button icon="pi {{ col.icon }}" [rounded]="true" [text]="true" severity="info"
-            [disabled]="col.field && record[col.field] ? false : true" (onClick)="col?.action(null, null)">
-          </p-button>
-        </div>
-        }
-        @case (typesColumns.HIDDEN) {
-        <div>
-          @if (col.field) {
-          <div class="hidden">
-            {{ record[col.field] }}
-          </div>
-          }
-        </div>
-        }
-        @case (typesColumns.TRUNCATE_TEXT) {
-        <div>
-          @if (col.field) {
-          <div class="w-40 truncate">
-            {{ record[col.field] }}
-          </div>
-          }
-        </div>
-        }
-        @default {
-        <div>
-          @if (col.field) {
-          <div>
-            @switch (col.format) {
-            @case (typesFormat.UPPERCASE) {
-            <div>
-              {{ record[col.field] | uppercase}}
-            </div>
-            }
-            @case(typesFormat.LOWERCASE){
-            <div>
-              {{ record[col.field] | lowercase }}
-            </div>
-            }
-            @case(typesFormat.CAPITALIZE){
-            <div class="capitalize">
-              {{ record[col.field] | titlecase }}
-            </div>
-            }
-            @case(typesFormat.DATE){
-            <div>
-              {{ formatDate(record[col.field], typesFormatDate.API) }}
-            </div>
-            }
-            @case(typesFormat.DATETIME){
-            <div>
-              {{ formatDate(record[col.field], typesFormatDate.API_DATETIME) }}
-            </div>
-            }
-            @case(typesFormat.TIME){
-            <div>
-              {{ formatDate(record[col.field], typesFormatDate.API_TIME) }}
-            </div>
-            }
-            @case(typesFormat.TIME_HMS){
-            <div>
-              {{ formatDate(record[col.field], typesFormatDate.API_TIME_HMS) }}
-            </div>
-            }
-            @default{
-            <div>
-              {{ record[col.field] }}
-            </div>
-            }
-            }
-          </div>
-          }
-        </div>
-        }
-        }
-      </td>
-      }
-    </tr>
-  </ng-template>
-
-  <ng-template #emptymessage>
-    <tr>
-      <td [colSpan]="table.columns.length">{{ message }}</td>
-    </tr>
-  </ng-template>
-</p-table>
-
-<p-table #dtTableGeneric [value]="data" [selection]="dataSelected" (selectionChange)="onSelectedRecords($event)"
-  [dataKey]="table.fieldId" [responsive]="true" [rowHover]="true"
-  [rows]="table.rowsPerPageOptions ? table.rowsPerPageOptions[0] : 0" [showCurrentPageReport]="true"
-  [lazy]="!(table.isDataLocal ?? false)" [lazyLoadOnInit]="table.lazyLoadOnInit ?? false"
-  (onLazyLoad)="onLazyLoadRecords($event)" [totalRecords]="totalRecords" [rowsPerPageOptions]="table.rowsPerPageOptions"
-  [paginator]="table.paginator" currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} totales"
-  [filterDelay]="0" [scrollable]="true" [first]="first" [tableStyle]="{'width': width ? width + 'width' : 'auto' }"
-  paginatorDropdownAppendTo="body" [rowTrackBy]="trackByFunction" scrollHeight="400px" class="p-datatable-sm">
-
-  <ng-template #header>
-    <tr>
-      @for (col of selectColumns; track $index) {
-      <th class="px-2 py-1 text-sm bg-white sticky top-0 z-10">
-        <!-- select all -->
-        @if (col.type === typesColumns.MULTI_SELECT) {
-        <div>
-          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-        </div>
-        }
-
-        @if ((col.sort ?? false) && col.type !== typesColumns.HIDDEN) {
-        <!-- ordenamiento -->
-        <div [pSortableColumn]="col.field" class="flex items-center gap-1">
-          <p-sortIcon [field]="col.field" class="text-gray-500">
-          </p-sortIcon>
-          {{ col.label }}
-          @if (col.filter ?? false) {
-          <p-columnFilter [type]="col.type ?? typesColumns.STRING" [field]="col.field" display="menu" class="ml-auto"
-            [showButtons]="false" class="ml-auto text-gray-500"
-            [matchModeOptions]="col.type === typesColumns.DATE ? [matchModeOptions[1]] : matchModeOptions"
-            [matchMode]="matchModeOptions[0].value" [showMatchModes]="true" [showOperator]="false"
-            [showAddButton]="false">
-          </p-columnFilter>
-          }
-        </div>
-        }
-
-        @if (!col.sort && col.type !== typesColumns.HIDDEN) {
-        <!-- filtro -->
-        <div class="flex items-center gap-1">
-          {{ col.label }}
-          @if (col.filter ?? false) {
-          <p-columnFilter [type]="col.type ?? typesColumns.STRING" [field]="col.field" display="menu"
-            [showButtons]="false" class="ml-auto text-gray-500"
-            [matchModeOptions]="col.type === typesColumns.DATE ? [matchModeOptions[1]] : matchModeOptions"
-            [matchMode]="matchModeOptions[0].value" [showMatchModes]="true" [showOperator]="false"
-            [showAddButton]="false">
-          </p-columnFilter>
-          }
-        </div>
-        }
-      </th>
-      }
-    </tr>
-  </ng-template>
-
-  <ng-template #caption>
-    <!-- pendiente recibir mas acciones -->
-    <div>
-      @if (showButtonCleanFilters) {
-      <div class="flex-none flex justify-content-start">
-        <p-button icon="pi pi-filter-slash" styleClass="bg-white border-400 text-600 button-custom-table-generic"
-          (click)="onResetFilters()"></p-button>
-        <p-multiSelect #multiselectColumns [options]="table.columns" [showToggleAll]="true" [selectAll]="isSelectAll"
-          styleClass="border-400 text-600 ml-1 button-custom-table-generic" dropdownIcon="pi pi-list"
-          optionLabel="label" appendTo="body" [maxSelectedLabels]="1" (onSelectAllChange)="onSelectAllChange($event)"
-          (onChange)="onSelectMulti($event)" (onClear)="onClear()">
-        </p-multiSelect>
-      </div>
-      }
-      <div class="flex-grow-1 flex justify-content-end">
-        <ng-content></ng-content>
-      </div>
-    </div>
-  </ng-template>
 
   <ng-template #body let-record>
     <tr>
 
       @for (col of selectColumns; track $index) {
-      <td class="px-2 py-1 text-sm">
+      <td class="px-2 py-0.5 text-sm text-center">
         @switch (col.type) {
         @case (typesColumns.MULTI_SELECT) {
         <div>
@@ -284,20 +98,17 @@
         </div>
         }
         @case (typesColumns.ACTION) {
-        <!-- <div [class]="col.field && record[col.field] ? 'cursor-pointer' : 'cursor-not-allowed'">
-          <p-button icon="pi {{ col.icon }}" [rounded]="true" [text]="true" severity="info"
-            [disabled]="col.field && record[col.field] ? false : true" (onClick)="col?.action(record)">
-          </p-button>
-        </div> -->
-        <div class="flex py-0 px-0 custom-icon-size">
+        <div class="flex py-0 px-0 my-0 fmx-0 custom-icon-size items-center gap-0">
           @for (btn of record['acciones']['botonera']; track $index) {
-          <!-- <button type="button" [disabled]="col.field && record[col.field] ? false : true"
-                      (onClick)="col?.action(record, btn)">b</button> -->
-          <p-button [rounded]="true" [text]="true" severity="info"
-            [disabled]="col.field && record[col.field] ? false : true" (onClick)="col?.action(record, btn)"
-            class="text-xs" styleClass="p-button-sm p-button-text p-button-icon-only"><i class="pi {{ btn.icon }}"
-              style="color: #0fe728"></i>
+          <p-button [rounded]="true" [text]="false" [disabled]="col.field && record[col.field] ? false : true"
+            (onClick)="col?.action(record, btn)" class="text-xs" styleClass="p-button-sm p-button-text"
+            pTooltip="{{ btn.tooltip }}" tooltipPosition="top" tooltipStyleClass="tooltip-custom">
+            <i class="pi {{ btn.icon }}" [ngStyle]="{'color': btn.color}"></i>
           </p-button>
+          @if (btn.exec === 'check') {
+          <input type="checkbox" class="p-checkbox-box custom-checkbox" [checked]="record.isCheckedAction || false"
+            (change)="col?.action(record, btn)">
+          }
           }
         </div>
         }
@@ -340,22 +151,22 @@
             </div>
             }
             @case(typesFormat.DATE){
-            <div>
+            <div class="text-xs px-1 py-0">
               {{ formatDate(record[col.field], typesFormatDate.API) }}
             </div>
             }
             @case(typesFormat.DATETIME){
-            <div>
+            <div class="text-xs px-1 py-0">
               {{ formatDate(record[col.field], typesFormatDate.API_DATETIME) }}
             </div>
             }
             @case(typesFormat.TIME){
-            <div class="w-40">
+            <div class="w-40 text-xs px-1 py-0">
               {{ formatDate(record[col.field], typesFormatDate.API_TIME) }}
             </div>
             }
             @case(typesFormat.TIME_HMS){
-            <div>
+            <div class="text-xs px-1 py-0">
               {{ formatDate(record[col.field], typesFormatDate.API_TIME_HMS) }}
             </div>
             }

@@ -14,7 +14,7 @@
     <div class="p-card px-3 pt-3 pb-2">
       <app-table-generic [data]="data?.data ?? []" [dataSelected]="dataSelected ?? []"
         [totalRecords]="data?.totalRecords ?? 0" [first]="data?.pagination?.first ?? 0" [table]="table"
-        [showButtonCleanFilters]="(showFilterstSubject$ | async) ?? false" (onSelected)="onSelectedRecords($event)"
+        [showFilters]="(showFilterstSubject$ |  async)" (onSelected)="onSelectedRecords($event)"
         (onLazyLoad)="onLazyLoadRecords($event)">
         <ng-content></ng-content>
       </app-table-generic>

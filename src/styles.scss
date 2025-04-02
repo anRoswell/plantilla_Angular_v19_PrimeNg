@@ -18,3 +18,23 @@
   @tailwind components;
   @tailwind utilities;
 }
+/* Ajuste de diseño del tooltip */
+.tooltip-custom {
+  font-size: 14px !important;
+  padding: 6px 10px !important;
+  border-radius: 4px !important;
+  white-space: nowrap !important;
+}
+
+/* Ajusta la posición si es necesario */
+.tooltip-custom.p-tooltip {
+  transform: translateY(-5px) !important; /* Mueve el tooltip un poco más arriba */
+}
+
+/* Si el texto del tooltip se corta */
+.tooltip-custom .p-tooltip-text {
+  white-space: nowrap !important;
+  max-width: 200px; /* Ajusta el ancho máximo */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

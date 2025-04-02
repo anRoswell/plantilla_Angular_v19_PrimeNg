@@ -22,59 +22,68 @@
         "acciones": {
         "icon": "",
         "action": "ver",
-         "botonera": [
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-file-pdf",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-search",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-pencil",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-thumbs-up",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-trash",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-eye",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-times",
-            "exec": ""
-          },
-
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sync",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-bolt",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sitemap",
-            "exec": ""
-          }
-        ]
+      "botonera": [
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-file-pdf",
+          "color": "#D32F2F",
+          "exec": "openPDF"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-search",
+          "color": "#1976D2",
+          "exec": "check"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-pencil",
+          "color": "#FBC02D",
+          "exec": "otroModal"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-thumbs-up",
+          "color": "#388E3C",
+          "exec": "modalTable"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-trash",
+          "color": "#616161",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-eye",
+          "color": "#0288D1",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-times",
+          "color": "#E53935",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sync",
+          "color": "#8E24AA",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-bolt",
+          "color": "#FF6F00",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sitemap",
+          "color": "#00796B",
+          "exec": ""
+        }
+      ]
       }
       },
       {
@@ -97,59 +106,68 @@
          "acciones": {
         "icon": "",
         "action": "ver",
-         "botonera": [
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-file-pdf",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-search",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-pencil",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-thumbs-up",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-trash",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-eye",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-times",
-            "exec": ""
-          },
-
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sync",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-bolt",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sitemap",
-            "exec": ""
-          }
-        ]
+      "botonera": [
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-file-pdf",
+          "color": "#D32F2F",
+          "exec": "openPDF"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-search",
+          "color": "#1976D2",
+          "exec": "check"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-pencil",
+          "color": "#FBC02D",
+          "exec": "otroModal"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-thumbs-up",
+          "color": "#388E3C",
+          "exec": "modalTable"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-trash",
+          "color": "#616161",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-eye",
+          "color": "#0288D1",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-times",
+          "color": "#E53935",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sync",
+          "color": "#8E24AA",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-bolt",
+          "color": "#FF6F00",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sitemap",
+          "color": "#00796B",
+          "exec": ""
+        }
+      ]
       }
       },
       {
@@ -172,59 +190,68 @@
          "acciones": {
         "icon": "",
         "action": "ver",
-         "botonera": [
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-file-pdf",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-search",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-pencil",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-thumbs-up",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-trash",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-eye",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-times",
-            "exec": ""
-          },
-
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sync",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-bolt",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sitemap",
-            "exec": ""
-          }
-        ]
+      "botonera": [
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-file-pdf",
+          "color": "#D32F2F",
+          "exec": "openPDF"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-search",
+          "color": "#1976D2",
+          "exec": "check"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-pencil",
+          "color": "#FBC02D",
+          "exec": "otroModal"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-thumbs-up",
+          "color": "#388E3C",
+          "exec": "modalTable"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-trash",
+          "color": "#616161",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-eye",
+          "color": "#0288D1",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-times",
+          "color": "#E53935",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sync",
+          "color": "#8E24AA",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-bolt",
+          "color": "#FF6F00",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sitemap",
+          "color": "#00796B",
+          "exec": ""
+        }
+      ]
       }
       },
       {
@@ -247,59 +274,68 @@
          "acciones": {
         "icon": "",
         "action": "ver",
-         "botonera": [
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-file-pdf",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-search",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-pencil",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-thumbs-up",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-trash",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-eye",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-times",
-            "exec": ""
-          },
-
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sync",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-bolt",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sitemap",
-            "exec": ""
-          }
-        ]
+      "botonera": [
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-file-pdf",
+          "color": "#D32F2F",
+          "exec": "openPDF"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-search",
+          "color": "#1976D2",
+          "exec": "check"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-pencil",
+          "color": "#FBC02D",
+          "exec": "otroModal"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-thumbs-up",
+          "color": "#388E3C",
+          "exec": "modalTable"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-trash",
+          "color": "#616161",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-eye",
+          "color": "#0288D1",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-times",
+          "color": "#E53935",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sync",
+          "color": "#8E24AA",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-bolt",
+          "color": "#FF6F00",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sitemap",
+          "color": "#00796B",
+          "exec": ""
+        }
+      ]
       }
       },
       {
@@ -322,59 +358,68 @@
          "acciones": {
         "icon": "",
         "action": "ver",
-         "botonera": [
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-file-pdf",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-search",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-pencil",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-thumbs-up",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-trash",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-eye",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-times",
-            "exec": ""
-          },
-
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sync",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-bolt",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sitemap",
-            "exec": ""
-          }
-        ]
+      "botonera": [
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-file-pdf",
+          "color": "#D32F2F",
+          "exec": "openPDF"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-search",
+          "color": "#1976D2",
+          "exec": "check"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-pencil",
+          "color": "#FBC02D",
+          "exec": "otroModal"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-thumbs-up",
+          "color": "#388E3C",
+          "exec": "modalTable"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-trash",
+          "color": "#616161",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-eye",
+          "color": "#0288D1",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-times",
+          "color": "#E53935",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sync",
+          "color": "#8E24AA",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-bolt",
+          "color": "#FF6F00",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sitemap",
+          "color": "#00796B",
+          "exec": ""
+        }
+      ]
       }
       },
       {
@@ -397,59 +442,68 @@
          "acciones": {
         "icon": "",
         "action": "ver",
-         "botonera": [
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-file-pdf",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-search",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-pencil",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-thumbs-up",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-trash",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-eye",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-times",
-            "exec": ""
-          },
-
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sync",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-bolt",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sitemap",
-            "exec": ""
-          }
-        ]
+      "botonera": [
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-file-pdf",
+          "color": "#D32F2F",
+          "exec": "openPDF"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-search",
+          "color": "#1976D2",
+          "exec": "check"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-pencil",
+          "color": "#FBC02D",
+          "exec": "otroModal"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-thumbs-up",
+          "color": "#388E3C",
+          "exec": "modalTable"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-trash",
+          "color": "#616161",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-eye",
+          "color": "#0288D1",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-times",
+          "color": "#E53935",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sync",
+          "color": "#8E24AA",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-bolt",
+          "color": "#FF6F00",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sitemap",
+          "color": "#00796B",
+          "exec": ""
+        }
+      ]
       }
       },
       {
@@ -472,59 +526,68 @@
          "acciones": {
         "icon": "",
         "action": "ver",
-         "botonera": [
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-file-pdf",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-search",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-pencil",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-thumbs-up",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-trash",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-eye",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-times",
-            "exec": ""
-          },
-
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sync",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-bolt",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sitemap",
-            "exec": ""
-          }
-        ]
+      "botonera": [
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-file-pdf",
+          "color": "#D32F2F",
+          "exec": "openPDF"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-search",
+          "color": "#1976D2",
+          "exec": "check"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-pencil",
+          "color": "#FBC02D",
+          "exec": "otroModal"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-thumbs-up",
+          "color": "#388E3C",
+          "exec": "modalTable"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-trash",
+          "color": "#616161",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-eye",
+          "color": "#0288D1",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-times",
+          "color": "#E53935",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sync",
+          "color": "#8E24AA",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-bolt",
+          "color": "#FF6F00",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sitemap",
+          "color": "#00796B",
+          "exec": ""
+        }
+      ]
       }
       },
       {
@@ -547,59 +610,68 @@
          "acciones": {
         "icon": "",
         "action": "ver",
-         "botonera": [
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-file-pdf",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-search",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-pencil",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-thumbs-up",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-trash",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-eye",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-times",
-            "exec": ""
-          },
-
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sync",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-bolt",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sitemap",
-            "exec": ""
-          }
-        ]
+      "botonera": [
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-file-pdf",
+          "color": "#D32F2F",
+          "exec": "openPDF"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-search",
+          "color": "#1976D2",
+          "exec": "check"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-pencil",
+          "color": "#FBC02D",
+          "exec": "otroModal"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-thumbs-up",
+          "color": "#388E3C",
+          "exec": "modalTable"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-trash",
+          "color": "#616161",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-eye",
+          "color": "#0288D1",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-times",
+          "color": "#E53935",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sync",
+          "color": "#8E24AA",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-bolt",
+          "color": "#FF6F00",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sitemap",
+          "color": "#00796B",
+          "exec": ""
+        }
+      ]
       }
       },
       {
@@ -622,59 +694,68 @@
          "acciones": {
         "icon": "",
         "action": "ver",
-         "botonera": [
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-file-pdf",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-search",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-pencil",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-thumbs-up",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-trash",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-eye",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-times",
-            "exec": ""
-          },
-
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sync",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-bolt",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sitemap",
-            "exec": ""
-          }
-        ]
+      "botonera": [
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-file-pdf",
+          "color": "#D32F2F",
+          "exec": "openPDF"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-search",
+          "color": "#1976D2",
+          "exec": "check"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-pencil",
+          "color": "#FBC02D",
+          "exec": "otroModal"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-thumbs-up",
+          "color": "#388E3C",
+          "exec": "modalTable"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-trash",
+          "color": "#616161",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-eye",
+          "color": "#0288D1",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-times",
+          "color": "#E53935",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sync",
+          "color": "#8E24AA",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-bolt",
+          "color": "#FF6F00",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sitemap",
+          "color": "#00796B",
+          "exec": ""
+        }
+      ]
       }
       },
       {
@@ -697,59 +778,68 @@
         "acciones": {
         "icon": "",
         "action": "ver",
-         "botonera": [
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-file-pdf",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-search",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-pencil",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-thumbs-up",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-trash",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-eye",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-times",
-            "exec": ""
-          },
-
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sync",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-bolt",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sitemap",
-            "exec": ""
-          }
-        ]
+      "botonera": [
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-file-pdf",
+          "color": "#D32F2F",
+          "exec": "openPDF"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-search",
+          "color": "#1976D2",
+          "exec": "check"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-pencil",
+          "color": "#FBC02D",
+          "exec": "otroModal"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-thumbs-up",
+          "color": "#388E3C",
+          "exec": "modalTable"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-trash",
+          "color": "#616161",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-eye",
+          "color": "#0288D1",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-times",
+          "color": "#E53935",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sync",
+          "color": "#8E24AA",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-bolt",
+          "color": "#FF6F00",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sitemap",
+          "color": "#00796B",
+          "exec": ""
+        }
+      ]
       }
       },
       {
@@ -772,59 +862,68 @@
        "acciones": {
         "icon": "",
         "action": "ver",
-         "botonera": [
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-file-pdf",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-search",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-pencil",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-thumbs-up",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-trash",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-eye",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-times",
-            "exec": ""
-          },
-
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sync",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-bolt",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sitemap",
-            "exec": ""
-          }
-        ]
+      "botonera": [
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-file-pdf",
+          "color": "#D32F2F",
+          "exec": "openPDF"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-search",
+          "color": "#1976D2",
+          "exec": "check"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-pencil",
+          "color": "#FBC02D",
+          "exec": "otroModal"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-thumbs-up",
+          "color": "#388E3C",
+          "exec": "modalTable"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-trash",
+          "color": "#616161",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-eye",
+          "color": "#0288D1",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-times",
+          "color": "#E53935",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sync",
+          "color": "#8E24AA",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-bolt",
+          "color": "#FF6F00",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sitemap",
+          "color": "#00796B",
+          "exec": ""
+        }
+      ]
       }
       },
       {
@@ -847,59 +946,68 @@
          "acciones": {
         "icon": "",
         "action": "ver",
-         "botonera": [
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-file-pdf",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-search",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-pencil",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-thumbs-up",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-trash",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-eye",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-times",
-            "exec": ""
-          },
-
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sync",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-bolt",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sitemap",
-            "exec": ""
-          }
-        ]
+      "botonera": [
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-file-pdf",
+          "color": "#D32F2F",
+          "exec": "openPDF"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-search",
+          "color": "#1976D2",
+          "exec": "check"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-pencil",
+          "color": "#FBC02D",
+          "exec": "otroModal"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-thumbs-up",
+          "color": "#388E3C",
+          "exec": "modalTable"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-trash",
+          "color": "#616161",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-eye",
+          "color": "#0288D1",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-times",
+          "color": "#E53935",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sync",
+          "color": "#8E24AA",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-bolt",
+          "color": "#FF6F00",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sitemap",
+          "color": "#00796B",
+          "exec": ""
+        }
+      ]
       }
       },
       {
@@ -922,59 +1030,68 @@
          "acciones": {
         "icon": "",
         "action": "ver",
-         "botonera": [
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-file-pdf",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-search",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-pencil",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-thumbs-up",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-trash",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-eye",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-times",
-            "exec": ""
-          },
-
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sync",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-bolt",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sitemap",
-            "exec": ""
-          }
-        ]
+      "botonera": [
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-file-pdf",
+          "color": "#D32F2F",
+          "exec": "openPDF"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-search",
+          "color": "#1976D2",
+          "exec": "check"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-pencil",
+          "color": "#FBC02D",
+          "exec": "otroModal"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-thumbs-up",
+          "color": "#388E3C",
+          "exec": "modalTable"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-trash",
+          "color": "#616161",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-eye",
+          "color": "#0288D1",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-times",
+          "color": "#E53935",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sync",
+          "color": "#8E24AA",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-bolt",
+          "color": "#FF6F00",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sitemap",
+          "color": "#00796B",
+          "exec": ""
+        }
+      ]
       }
       },
       {
@@ -997,59 +1114,68 @@
          "acciones": {
         "icon": "",
         "action": "ver",
-         "botonera": [
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-file-pdf",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-search",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-pencil",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-thumbs-up",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-trash",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-eye",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-times",
-            "exec": ""
-          },
-
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sync",
-            "exec": ""
-          },
-           {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-bolt",
-            "exec": ""
-          },
-          {
-            "action": "(rowData: any) => this.onDownloadActaPdf(rowData)",
-            "icon": "pi-sitemap",
-            "exec": ""
-          }
-        ]
+      "botonera": [
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-file-pdf",
+          "color": "#D32F2F",
+          "exec": "openPDF"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-search",
+          "color": "#1976D2",
+          "exec": "check"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-pencil",
+          "color": "#FBC02D",
+          "exec": "otroModal"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-thumbs-up",
+          "color": "#388E3C",
+          "exec": "modalTable"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-trash",
+          "color": "#616161",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-eye",
+          "color": "#0288D1",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-times",
+          "color": "#E53935",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sync",
+          "color": "#8E24AA",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-bolt",
+          "color": "#FF6F00",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sitemap",
+          "color": "#00796B",
+          "exec": ""
+        }
+      ]
       }
       }
     ],

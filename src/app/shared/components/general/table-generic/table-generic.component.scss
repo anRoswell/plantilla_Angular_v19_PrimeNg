@@ -1,9 +1,16 @@
 ::ng-deep .button-custom-table-generic {
-  height: 32px;
-  width: 32px;
-  border-radius: 10px;
+    height: 32px;
+    width: 32px;
+    border-radius: 10px;
 }
-
-.custom-icon-size .p-button-icon {
-  font-size: 0.25rem !important; /* Tamaño personalizado */
+.custom-checkbox:checked {
+  appearance: none; /* Oculta el estilo nativo */
+  position: relative;
+  border-color: var(--p-button-text-primary-color);
+  background-color: var(--p-button-text-primary-color);
+}
+.custom-checkbox:checked::after {
+  content: '✔'; /* Agrega la marca de check */
+  color: white;
+  font-family: Arial, sans-serif; /* Fuente más similar a PrimeNG */
 }
