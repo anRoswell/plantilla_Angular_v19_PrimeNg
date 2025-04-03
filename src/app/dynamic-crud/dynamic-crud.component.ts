@@ -6,61 +6,12 @@ import { TableGenericComponent } from '../shared/components/general/table-generi
 // PrimeNg
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
-import { DatePicker, DatePickerModule } from 'primeng/datepicker';
+import { DatePickerModule } from 'primeng/datepicker';
 
 // Models
-import { ITable, TypeColumn, TypeFormat } from '../models/general/ITable';
 import { DynamicForm02Component } from '../dynamic-form02/dynamic-form02.component';
-import { HttpClient } from '@angular/common/http';
 import { Validators } from '@angular/forms';
-
-export interface FormField {
-  type:
-    | 'input'
-    | 'textarea'
-    | 'select'
-    | 'checkbox'
-    | 'radio'
-    | 'file'
-    | 'dropdown'
-    | 'calendar'
-    | 'inputNumber'
-    | 'multiselect'
-    | 'inputSwitch';
-  name: string; // nombre del campo
-  label: string; // etiqueta para mostrar
-  value?: any; // valor predeterminado
-  required?: boolean; // si es requerido
-  options?: any[]; // opciones para selects
-  validators?: any[]; // validadores a aplicar
-  errorMessage?: string; // mensaje de error
-  placeholder?: string; // placeholder para el campo
-  gridClass?: string; // clase para el grid (p-col-12 p-md-6, etc)
-  inputType?: string; // tipo de input (text, number, email, etc)
-  acceptedTypes?: string; // Ej: 'image/*,.pdf'
-  multiple?: boolean;
-  preview?: boolean; // Para mostrar preview de imágenes
-  uploadUrl?: string;
-  maxFileSize?: number;
-  customUpload?: boolean;
-  disabled?: boolean;
-  autoUpload?: boolean;
-  minDate?: DatePicker['minDate'];
-  maxDate?: DatePicker['maxDate'];
-  dateFormat?: DatePicker['dateFormat'];
-  selectionMode?: DatePicker['selectionMode'];
-  showButtonBar?: DatePicker['showButtonBar'];
-}
-
-interface FormGroupConfig {
-  [key: string]: [any, any[]];
-}
-
-export interface FormConfig {
-  fields: FormField[];
-  title?: string;
-  submitLabel?: string;
-}
+import { FormConfig } from '../interface/IDynamicCrud';
 
 @Component({
   selector: 'app-dynamic-crud',
@@ -97,6 +48,32 @@ export class DynamicCrudComponent implements OnInit {
           placeholder: 'Ingrese su nombre completo',
           errorMessage: 'El nombre es obligatorio',
           gridClass: 'flex-auto',
+        },
+        {
+          type: 'lupas',
+          name: 'ubicacion',
+          label: 'Ubicación',
+          required: true,
+          placeholder: 'Busque y seleccione una ubicación',
+          errorMessage: 'La ubicación es obligatoria',
+          gridClass: 'flex-auto',
+          options: [
+            { value: 'cdmx', label: 'Ciudad de México', code: 'MX-CMX' },
+            { value: 'mty', label: 'Monterrey', code: 'MX-NLE' },
+            { value: 'gdl', label: 'Guadalajara', code: 'MX-JAL' },
+            { value: 'ver', label: 'Veracruz', code: 'MX-VER' },
+            { value: 'mer', label: 'Mérida', code: 'MX-YUC' },
+          ],
+          searchFields: ['label', 'code'],
+          icon: 'pi-search',
+          dropdownIcon: 'pi-chevron-down',
+          minLength: 1,
+          delay: 300,
+          suggestionsLimit: 5,
+          emptyMessage: 'No se encontraron ubicaciones',
+          loadingMessage: 'Buscando ubicaciones...',
+          autoHighlight: true,
+          forceSelection: true,
         },
         {
           type: 'input',
@@ -225,7 +202,12 @@ export class DynamicCrudComponent implements OnInit {
         email: 'juan@ejemplo.com',
         telefono: '+52 55 1234 5678',
         pais: 'mx',
-        fechaNacimiento: new Date(1990, 5, 15),
+        ubicacion: {
+          value: 'cdmx',
+          label: 'Ciudad de México',
+          code: 'MX-CMX',
+        },
+        fechaNacimiento: '1990-06-15T00:00:00.000Z',
         genero: 'M',
         edad: 32,
         intereses: ['deportes', 'musica'],
