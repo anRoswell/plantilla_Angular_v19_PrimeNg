@@ -40,7 +40,7 @@
             <p-datepicker [id]="filter.name" styleClass="w-full" [formControlName]="filter.name"
               [placeholder]="filter?.placeholder ?? filter.label" [minDate]="filter.minDate ?? minDate"
               [maxDate]="filter.maxDate ?? maxDate" [readonlyInput]="true" [showClear]="true"
-              [selectionMode]="filter.typeCalendar ?? typesCalendar.SINGLE"></p-datepicker>
+              [selectionMode]="filter.typeCalendar ?? typesCalendar.SINGLE" [showIcon]="true"></p-datepicker>
           </div>
           }
           }
@@ -59,9 +59,13 @@
         </p-button>
         <p class="pl-2 m-0 font-semibold"> Parámetros de consulta</p>
       </div>
-      <div class="mt-2 sm:mt-0">
+      <div class="flex gap-2">
         <p-button id="filter-button" (click)="onConsultFilter()" [style]="{ 'border-radius': '3px' }"
           [disabled]="form.invalid" severity="primary" label="Consultar">
+        </p-button>
+
+        <p-button id="new-button" (click)="onConsultFilter()" [style]="{ 'border-radius': '3px' }"
+          [disabled]="form.invalid" severity="primary" label="Nuevo">
         </p-button>
       </div>
     </div>
