@@ -7,10 +7,14 @@ import {
 } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Subject } from 'rxjs';
+
+// Interface
 import { IInboxFilter } from '../../../../models/general/IInboxFilter';
 import { IDataPagination } from '../../../../models/general/IPagination';
 import { ITable } from '../../../../models/general/ITable';
 import { InboxFilterComponent } from './filter/inbox-filter.component';
+
+// Component
 import { TableGenericComponent } from '../table-generic/table-generic.component';
 import { CommonModule } from '@angular/common';
 import { SkeletonModule } from 'primeng/skeleton';

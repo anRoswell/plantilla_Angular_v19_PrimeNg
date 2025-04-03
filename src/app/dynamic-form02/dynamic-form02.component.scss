@@ -9,7 +9,8 @@
 
   .p-inputtext,
   .p-dropdown,
-  .p-multiselect {
+  .p-multiselect,
+  .p-autocomplete {
     width: 100%;
   }
 
@@ -21,4 +22,35 @@
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
   }
+}
+
+/* Estilos para el file upload */
+.p-fileupload-content .p-progressbar {
+  @apply h-1;
+}
+
+.p-fileupload-buttonbar {
+  @apply bg-white border border-gray-300 rounded-t-md p-2;
+}
+
+.p-fileupload-content {
+  @apply border border-gray-300 border-t-0 rounded-b-md p-4;
+}
+
+/* Asegurar que el input interno ocupe todo el espacio */
+p-autocomplete .p-autocomplete-input {
+  width: 100% !important;
+}
+
+/* Estilo para el dropdown */
+p-autocomplete .p-autocomplete-panel {
+  border: 1px solid #e5e7eb !important;
+  border-radius: 0.375rem !important;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important;
+  margin-top: 0.25rem !important;
+}
+
+/* Estilo para los items del dropdown */
+p-autocomplete .p-autocomplete-items .p-autocomplete-item {
+  padding: 0.5rem 1rem !important;
 }

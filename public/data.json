@@ -2,125 +2,431 @@
     "status": 200,
     "mensaje": "Consulta exitosa.",
     "data": [
+    {
+      "cod": 413986,
+      "emp": 58,
+      "proceso": "[2411] (4867)-FLUJO FACTURACION-YSYP",
+      "paso": "(984)-APROBAR DOCUMENTOS CONTABLES",
+      "perfil": 57505,
+      "flujo": 3457,
+      "ruta": 3457,
+      "tipdoc": "FACTURA ELECTRÓNICA",
+      "estado": "Anulado",
+      "fecha_cargue": "12/10/2020 17:33",
+      "fecha_doc": "10/oct/2020 00:00:00",
+      "observacion": "PRUEBA FLUJO DOCUMENTAL SYSOTEC FACTURACION 202010/015",
+      "valor": "$123,460.00",
+      "proveedor": "800201710",
+      "codigo": "FE001",
+      "fact": "FE001",
+      "acciones": {
+        "icon": "pi-pencil",
+        "action": "ver",
+      "botonera": [
         {
-        "tipoAlerta": "Distancia",
-        "idAlerta": 85,
-        "vehiculo": "TTR-298",
-        "imei": "3120017",
-        "valorAlerta": 85,
-        "imei_Supervisor": "8f0dd7ed16ca7d6e",
-        "distanciaCalculada": 1335.444761,
-        "descripcion": "Alerta en separación de actores!!",
-        "ciudad": "Pereira",
-        "estado": "1",
-        "acciones": {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-file-pdf",
+          "color": "#D32F2F",
+          "exec": "openPDF",
+          "tooltip": "Descargar PDF"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-search",
+          "color": "#1976D2",
+          "exec": "check",
+          "tooltip": "Descargar PDF"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
           "icon": "pi-pencil",
-          "action": "ver"
-        },
-        "latVehiculo": 4.804788,
-        "lonVehiculo": -75.696785,
-        "latPersona": 4.810112,
-        "lonPersona": -75.685982,
-        "fechaRegistro": "2025-03-18T13:30:00.863"
+          "color": "#FBC02D",
+          "exec": "otroModal",
+           "tooltip": "Revisar detalles"
         },
         {
-        "tipoAlerta": "Distancia",
-        "idAlerta": 82,
-        "vehiculo": "TTR-298",
-        "imei": "3120017",
-        "valorAlerta": 82,
-        "imei_Supervisor": "8f0dd7ed16ca7d6e",
-        "distanciaCalculada": 1335.444761,
-        "descripcion": "Alerta en separación de actores!!",
-        "ciudad": "Pereira",
-        "estado": "1",
-        "acciones": {
-          "field": "acciones",
-          "icon": "pi-pencil",
-          "action": "onEdit"
-        },
-        "latVehiculo": 4.804788,
-        "lonVehiculo": -75.696785,
-        "latPersona": 4.810112,
-        "lonPersona": -75.685982,
-        "fechaRegistro": "2025-03-18T13:30:00.863"
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-thumbs-up",
+          "color": "#388E3C",
+          "exec": "modalTable"
         },
         {
-            "tipoAlerta": "Distancia",
-            "idAlerta": 81,
-            "vehiculo": "TTR-298",
-            "valorAlerta": 82,
-            "imei": "3120017",
-            "imei_Supervisor": "8f0dd7ed16ca7d6e",
-            "distanciaCalculada": 2094.291586,
-            "descripcion": "Alerta en separación de actores!!",
-            "ciudad": "Pereira",
-            "estado": "1",
-            "acciones": {
-              "field": "acciones",
-              "icon": "pi-pencil",
-              "action": "onEdit",
-              "extraActions": [
-                { "icon": "pi-trash", "action": "onDelete", "class": "text-red-500" }
-              ]
-            },
-            "latVehiculo": 4.813372,
-            "lonVehiculo": -75.704597,
-            "latPersona": 4.810112,
-            "lonPersona": -75.685982,
-            "fechaRegistro": "2025-03-18T13:25:01.153"
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-trash",
+          "color": "#616161",
+          "exec": ""
         },
         {
-            "tipoAlerta": "Distancia",
-            "idAlerta": 80,
-            "vehiculo": "TTR-298",
-            "imei": "3120017",
-            "valorAlerta": 82,
-            "imei_Supervisor": "8f0dd7ed16ca7d6e",
-            "distanciaCalculada": 3244.890528,
-            "descripcion": "Alerta en separación de actores!!",
-            "ciudad": "Pereira",
-            "estado": "1",
-            "latVehiculo": 4.815946,
-            "lonVehiculo": -75.714676,
-            "latPersona": 4.810112,
-            "lonPersona": -75.685982,
-            "fechaRegistro": "2025-03-18T13:20:01.183"
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-eye",
+          "color": "#0288D1",
+          "exec": ""
         },
         {
-            "tipoAlerta": "Distancia",
-            "idAlerta": 79,
-            "vehiculo": "TTR-298",
-            "valorAlerta": 82,
-            "imei": "3120017",
-            "imei_Supervisor": "8f0dd7ed16ca7d6e",
-            "distanciaCalculada": 5229.040961,
-            "descripcion": "Alerta en separación de actores!!",
-            "ciudad": "Pereira",
-            "estado": "1",
-            "latVehiculo": 4.817296,
-            "lonVehiculo": -75.73262,
-            "latPersona": 4.810112,
-            "lonPersona": -75.685982,
-            "fechaRegistro": "2025-03-18T13:15:01.573"
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-times",
+          "color": "#E53935",
+          "exec": ""
         },
         {
-            "tipoAlerta": "Distancia",
-            "idAlerta": 78,
-            "vehiculo": "TTR-298",
-            "imei": "3120017",
-            "valorAlerta": 82,
-            "imei_Supervisor": "8f0dd7ed16ca7d6e",
-            "distanciaCalculada": 5957.238864,
-            "descripcion": "Alerta en separación de actores!!",
-            "ciudad": "Pereira",
-            "estado": "1",
-            "latVehiculo": 4.820814,
-            "lonVehiculo": -75.738663,
-            "latPersona": 4.810112,
-            "lonPersona": -75.685982,
-            "fechaRegistro": "2025-03-18T13:10:00.86"
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sync",
+          "color": "#8E24AA",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-bolt",
+          "color": "#FF6F00",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sitemap",
+          "color": "#00796B",
+          "exec": ""
         }
+      ]
+      }
+    },
+    {
+      "cod": 413999,
+      "emp": 58,
+      "proceso": "[2411] (4867)-FLUJO FACTURACION-YSYP",
+      "paso": "(917)-REPOSITORIO COMPROBANTES",
+      "perfil": 57505,
+      "flujo": 3457,
+      "ruta": 3457,
+      "tipdoc": "FACTURA ELECTRÓNICA",
+      "estado": "Sig - Paso",
+      "fecha_cargue": "12/10/2020 17:33",
+      "fecha_doc": "10/oct/2020 00:00:00",
+      "observacion": "CLARO NUBE SEP 23 A OCT 22",
+      "valor": "$5,118,460.00",
+      "proveedor": "800201710",
+      "codigo": "FE002",
+      "fact": "FEC104",
+       "acciones": {
+        "action": "ver",
+      "botonera": [
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-file-pdf",
+          "color": "#D32F2F",
+          "exec": "openPDF"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-search",
+          "color": "#1976D2",
+          "exec": "check"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-pencil",
+          "color": "#FBC02D",
+          "exec": "otroModal"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-thumbs-up",
+          "color": "#388E3C",
+          "exec": "modalTable"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-trash",
+          "color": "#616161",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-eye",
+          "color": "#0288D1",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-times",
+          "color": "#E53935",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sync",
+          "color": "#8E24AA",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-bolt",
+          "color": "#FF6F00",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sitemap",
+          "color": "#00796B",
+          "exec": ""
+        }
+      ]
+      }
+    },
+    {
+      "cod": 414002,
+      "emp": 58,
+      "proceso": "[2411] (4867)-FLUJO FACTURACION-YSYP",
+      "paso": "(917)-REPOSITORIO COMPROBANTES",
+      "perfil": 57505,
+      "flujo": 3457,
+      "ruta": 3457,
+      "tipdoc": "FACTURA ELECTRÓNICA",
+      "estado": "Sig - Paso",
+      "fecha_cargue": "12/10/2020 17:33",
+      "fecha_doc": "10/oct/2020 00:00:00",
+      "observacion": "Licenciamiento Office 365, octubre.",
+      "valor": "$1,176,400.00",
+      "proveedor": "800201710",
+      "codigo": "FE003",
+      "fact": "FE 115",
+     "acciones": {
+        "icon": "pi-pencil",
+        "action": "ver",
+     "botonera": [
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-file-pdf",
+          "color": "#D32F2F",
+          "exec": "openPDF"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-search",
+          "color": "#1976D2",
+          "exec": "check"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-pencil",
+          "color": "#FBC02D",
+          "exec": "otroModal"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-thumbs-up",
+          "color": "#388E3C",
+          "exec": "modalTable"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-trash",
+          "color": "#616161",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-eye",
+          "color": "#0288D1",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-times",
+          "color": "#E53935",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sync",
+          "color": "#8E24AA",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-bolt",
+          "color": "#FF6F00",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sitemap",
+          "color": "#00796B",
+          "exec": ""
+        }
+      ]
+      }
+    },
+    {
+      "cod": 414003,
+      "emp": 58,
+      "proceso": "[2411] (4867)-FLUJO FACTURACION-YSYP",
+      "paso": "(917)-REPOSITORIO COMPROBANTES",
+      "perfil": 57505,
+      "flujo": 3457,
+      "ruta": 3457,
+      "tipdoc": "FACTURA ELECTRÓNICA",
+      "estado": "Sig - Paso",
+      "fecha_cargue": "12/10/2020 17:33",
+      "fecha_doc": "10/oct/2020 00:00:00",
+      "observacion": "Licenciamiento Office 365, octubre.",
+      "valor": "$1,176,400.00",
+      "proveedor": "800201710",
+      "codigo": "FE004",
+      "fact": "FE 115",
+     "acciones": {
+        "icon": "pi-pencil",
+        "action": "ver",
+    "botonera": [
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-file-pdf",
+          "color": "#D32F2F",
+          "exec": "openPDF",
+          "tooltip": "Descargar PDF"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-search",
+          "color": "#1976D2",
+          "exec": "check",
+          "tooltip": "Descargar PDF"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-pencil",
+          "color": "#FBC02D",
+          "exec": "otroModal",
+           "tooltip": "Revisar detalles"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-thumbs-up",
+          "color": "#388E3C",
+          "exec": "modalTable"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-trash",
+          "color": "#616161",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-eye",
+          "color": "#0288D1",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-times",
+          "color": "#E53935",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sync",
+          "color": "#8E24AA",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-bolt",
+          "color": "#FF6F00",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sitemap",
+          "color": "#00796B",
+          "exec": ""
+        }
+      ]
+      }
+    },
+    {
+      "cod": 414004,
+      "emp": 58,
+      "proceso": "[2411] (4867)-FLUJO FACTURACION-YSYP",
+      "paso": "(917)-REPOSITORIO COMPROBANTES",
+      "perfil": 57505,
+      "flujo": 3457,
+      "ruta": 3457,
+      "tipdoc": "FACTURA ELECTRÓNICA",
+      "estado": "Sig - Paso",
+      "fecha_cargue": "12/10/2020 17:33",
+      "fecha_doc": "10/oct/2020 00:00:00",
+      "observacion": "Licenciamiento Office 365, octubre.",
+      "valor": "$1,176,400.00",
+      "proveedor": "800201710",
+      "codigo": "FE005",
+      "fact": "FE 115",
+     "acciones": {
+        "icon": "",
+        "action": "ver",
+      "botonera": [
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-file-pdf",
+          "color": "#D32F2F",
+          "exec": "openPDF"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-search",
+          "color": "#1976D2",
+          "exec": "check"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-pencil",
+          "color": "#FBC02D",
+          "exec": "otroModal"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-thumbs-up",
+          "color": "#388E3C",
+          "exec": "modalTable"
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-trash",
+          "color": "#616161",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-eye",
+          "color": "#0288D1",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-times",
+          "color": "#E53935",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sync",
+          "color": "#8E24AA",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-bolt",
+          "color": "#FF6F00",
+          "exec": ""
+        },
+        {
+          "action": "(rowData: any) => this.handleAction(rowData)",
+          "icon": "pi-sitemap",
+          "color": "#00796B",
+          "exec": ""
+        }
+      ]
+      }
+    }
     ],
     "meta": {
         "registrosTotales": 1917,

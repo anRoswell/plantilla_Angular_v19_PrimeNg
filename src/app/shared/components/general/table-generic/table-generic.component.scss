@@ -3,3 +3,14 @@
     width: 32px;
     border-radius: 10px;
 }
+.custom-checkbox:checked {
+  appearance: none; /* Oculta el estilo nativo */
+  position: relative;
+  border-color: var(--p-button-text-primary-color);
+  background-color: var(--p-button-text-primary-color);
+}
+.custom-checkbox:checked::after {
+  content: '✔'; /* Agrega la marca de check */
+  color: white;
+  font-family: Arial, sans-serif; /* Fuente más similar a PrimeNG */
+}
