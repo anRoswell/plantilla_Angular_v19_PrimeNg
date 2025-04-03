@@ -26,6 +26,7 @@ import { ModalPanelDividerComponent } from './modal-panel-divider/modal-panel-di
 import { DynamicForm02Component } from './dynamic-form02/dynamic-form02.component';
 import { TableGenericComponent } from './shared/components/general/table-generic/table-generic.component';
 import { ITable, TypeColumn, TypeFormat } from './models/general/ITable';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-root',

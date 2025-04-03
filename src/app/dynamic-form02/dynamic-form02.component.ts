@@ -9,76 +9,69 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { MessageService } from 'primeng/api';
+import { FormsModule } from '@angular/forms';
 
 // PrimeNG Modules
 import { InputTextModule } from 'primeng/inputtext';
 import { TextareaModule } from 'primeng/textarea';
-import { DropdownModule } from 'primeng/dropdown';
 import { CheckboxModule } from 'primeng/checkbox';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { ToastModule } from 'primeng/toast';
-import { CalendarModule } from 'primeng/calendar';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { DatePickerModule } from 'primeng/datepicker';
 import { FluidModule } from 'primeng/fluid';
+import { MessageModule } from 'primeng/message';
+import { FileUpload, FileUploadEvent } from 'primeng/fileupload';
+import { ToastMessageOptions } from 'primeng/api';
+import { SelectModule } from 'primeng/select';
+import {
+  AutoCompleteCompleteEvent,
+  AutoCompleteModule,
+} from 'primeng/autocomplete';
 
-import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-
-export interface FormField {
-  type: string; // input, select, textarea, checkbox, calendar, etc
-  name: string; // nombre del campo
-  label: string; // etiqueta para mostrar
-  value?: any; // valor predeterminado
-  required?: boolean; // si es requerido
-  options?: any[]; // opciones para selects
-  validators?: any[]; // validadores a aplicar
-  errorMessage?: string; // mensaje de error
-  placeholder?: string; // placeholder para el campo
-  gridClass?: string; // clase para el grid (p-col-12 p-md-6, etc)
-  inputType?: string; // tipo de input (text, number, email, etc)
-}
-
-interface FormGroupConfig {
-  [key: string]: [any, any[]];
-}
-
-export interface FormConfig {
-  fields: FormField[];
-  title?: string;
-  submitLabel?: string;
-}
+// Pipe
+import { FileSizePipe } from '../pipe/FileSize.pipe.js';
+import {
+  CiudadOption,
+  FormConfig,
+  FormField,
+  FormGroupConfig,
+} from '../interface/IDynamicCrud.js';
+import { CiudadesService } from '../Services/ciudades.service.js';
 
 @Component({
   selector: 'app-dynamic-form02',
   standalone: true,
   imports: [
     FormsModule,
-    NgClass,
     ReactiveFormsModule,
     InputSwitchModule,
     MultiSelectModule,
     InputNumberModule,
-    CalendarModule,
+    DatePickerModule,
     ToastModule,
     CardModule,
     ButtonModule,
     InputTextModule,
     TextareaModule,
-    DropdownModule,
+    SelectModule,
     CheckboxModule,
     RadioButtonModule,
     DatePickerModule,
     FluidModule,
+    MessageModule,
+    FileUpload,
+    NgClass,
+    FileSizePipe,
+    AutoCompleteModule,
   ],
+  providers: [CiudadesService],
   templateUrl: './dynamic-form02.component.html',
   styleUrl: './dynamic-form02.component.scss',
-  providers: [MessageService],
 })
 export class DynamicForm02Component implements OnInit {
   @Input()
@@ -87,28 +80,37 @@ export class DynamicForm02Component implements OnInit {
   @Output() formSubmit = new EventEmitter<any>();
 
   date1: Date | undefined;
+  messages!: ToastMessageOptions[];
+
+  // Upload
+  uploadedFiles: { [key: string]: any[] } = {};
+
+  // Autocomplete
+  selectedUbicacion: any;
 
   form: FormGroup;
   fields: FormField[] = [];
 
   public response: string = '';
+  public itemsAutocomplete!: any[];
 
   constructor(
     private fb: FormBuilder,
-    private messageService: MessageService,
-    private httpClient: HttpClient
+    private ciudadesService: CiudadesService
   ) {
     this.form = this.fb.group({});
   }
 
   ngOnInit(): void {
     console.log(this.formData);
-    this.httpClient
-      .get('https://jsonplaceholder.typicode.com/todos/1')
-      .subscribe((data) => {
-        this.response = JSON.stringify(data);
-        this.initForm();
-      });
+
+    this.initForm();
+
+    // this.httpClient
+    //   .get('https://jsonplaceholder.typicode.com/todos/1')
+    //   .subscribe((data) => {
+    //     this.response = JSON.stringify(data);
+    //   });
 
     //#region
   }
@@ -155,6 +157,11 @@ export class DynamicForm02Component implements OnInit {
     this.form = this.fb.group(formGroup);
   }
 
+  private capitalizeFirstLetter(string: string): string {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  //#region FORM
   private updateFormData(): void {
     if (!this.formData) return;
 
@@ -167,22 +174,48 @@ export class DynamicForm02Component implements OnInit {
 
   onSubmit(): void {
     console.log(this.form.value);
-    console.log(this.form.valid);
 
     if (this.form.valid) {
-      this.formSubmit.emit(this.form.value);
-      this.messageService.add({
-        severity: 'success',
-        summary: 'Éxito',
-        detail: 'Formulario enviado correctamente',
+      // Aquí puedes procesar los archivos junto con los demás datos
+      const formData = new FormData();
+      const formValue = this.form.value;
+
+      // Agregar campos normales
+      Object.keys(formValue).forEach((key) => {
+        if (key !== 'archivos') {
+          // Ajusta según el nombre de tu campo de archivos
+          formData.append(key, formValue[key]);
+        }
       });
+
+      // Agregar archivos
+      Object.keys(this.uploadedFiles).forEach((fieldName) => {
+        if (this.uploadedFiles[fieldName]) {
+          this.uploadedFiles[fieldName].forEach((file) => {
+            formData.append(fieldName, file);
+          });
+        }
+      });
+
+      // Emitir el formulario (ahora incluye los archivos)
+      this.formSubmit.emit(formData);
+
+      this.messages = [
+        {
+          severity: 'success',
+          summary: 'Éxito',
+          detail: 'Formulario enviado correctamente',
+        },
+      ];
     } else {
       this.markFormGroupTouched(this.form);
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Error',
-        detail: 'Por favor, revise los campos marcados en rojo',
-      });
+      this.messages = [
+        {
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Por favor, revise los campos marcados en rojo',
+        },
+      ];
     }
   }
 
@@ -235,4 +268,167 @@ export class DynamicForm02Component implements OnInit {
     }
     return '';
   }
+  //#endregion
+
+  //#region UPLOAD FILE
+  onFileUpload(event: any, fieldName: string) {
+    console.log('Se activo en OnFileUload');
+    // Inicializar array si no existe
+    if (!this.uploadedFiles[fieldName]) {
+      this.uploadedFiles[fieldName] = [];
+    }
+
+    // Limpiar archivos previos si no es múltiple
+    const fieldConfig = this.config.fields.find((f) => f.name === fieldName);
+    if (!fieldConfig?.multiple) {
+      this.uploadedFiles[fieldName] = [];
+    }
+
+    // Agregar nuevos archivos (sin subirlos al servidor)
+    for (let file of event.files) {
+      this.uploadedFiles[fieldName].push(file);
+    }
+
+    // Actualizar el control del formulario con los archivos
+    this.form
+      .get(fieldName)
+      ?.setValue(
+        fieldConfig?.multiple
+          ? this.uploadedFiles[fieldName]
+          : this.uploadedFiles[fieldName][0]
+      );
+
+    // Notificar al usuario
+    this.messages = [
+      {
+        severity: 'success',
+        summary: 'Archivos listos',
+        detail: `Se agregaron ${event.files.length} archivo(s) al formulario`,
+      },
+    ];
+
+    // Simular éxito de carga (requerido por PrimeNG)
+    // Reemplaza event.options.clear() con:
+    if (event?.clear) {
+      event.clear(); // Forma correcta de limpiar los archivos seleccionados
+    }
+  }
+
+  // Método para manejar la eliminación de archivos
+  removeFile(fieldName: string, index: number) {
+    if (this.uploadedFiles[fieldName]?.length > index) {
+      const file = this.uploadedFiles[fieldName][index];
+
+      // Liberar objectURL si existe
+      // if (file.objectURL && file.objectURL.startsWith('blob:')) {
+      //   URL.revokeObjectURL(file.objectURL);
+      // }
+
+      this.uploadedFiles[fieldName].splice(index, 1);
+
+      // Actualizar el control del formulario
+      const fieldConfig = this.config.fields.find((f) => f.name === fieldName);
+      this.form
+        .get(fieldName)
+        ?.setValue(
+          fieldConfig?.multiple
+            ? this.uploadedFiles[fieldName]
+            : this.uploadedFiles[fieldName][0] || null
+        );
+    }
+  }
+
+  isImage(file: any): boolean {
+    return file?.type?.startsWith('image/');
+  }
+
+  getPreviewUrl(file: any): string {
+    return file.objectURL || URL.createObjectURL(file);
+  }
+
+  // Método para obtener el icono según el tipo de archivo
+  getFileIcon(file: any): string {
+    if (!file) return 'pi pi-file text-gray-400';
+
+    // Si es una imagen y tiene preview, mostrar miniaturas
+    if (this.isImage(file) && file.objectURL) {
+      return '';
+    }
+
+    const extension = file.name?.split('.').pop()?.toLowerCase() || '';
+    const fileType = file.type || '';
+
+    // Mapeo de tipos de archivo a iconos
+    const iconMap: { [key: string]: string } = {
+      pdf: 'pi pi-file-pdf text-red-500',
+      doc: 'pi pi-file-word text-blue-500',
+      docx: 'pi pi-file-word text-blue-500',
+      xls: 'pi pi-file-excel text-green-500',
+      xlsx: 'pi pi-file-excel text-green-500',
+      ppt: 'pi pi-file-powerpoint text-orange-500',
+      pptx: 'pi pi-file-powerpoint text-orange-500',
+      txt: 'pi pi-file text-gray-500',
+      csv: 'pi pi-file text-teal-500',
+      zip: 'pi pi-file-archive text-purple-500',
+      rar: 'pi pi-file-archive text-purple-500',
+      '7z': 'pi pi-file-archive text-purple-500',
+      jpg: 'pi pi-image',
+      jpeg: 'pi pi-image',
+      png: 'pi pi-image',
+      gif: 'pi pi-image',
+    };
+
+    return (
+      iconMap[extension] ||
+      iconMap[fileType.split('/')[1]] ||
+      'pi pi-file text-gray-400'
+    );
+  }
+  //endregion
+
+  //#region AutoComplete
+  private fillAutocomplete(): void {
+    this.itemsAutocomplete = [];
+  }
+
+  filterCountry(event: any): void {
+    // console.log(event);
+    // let _items = [...Array(10).keys()];
+
+    // if (event.query) {
+    //   this.itemsAutocomplete = event.query
+    //     ? [...Array(10).keys()].map((item) => {
+    //      { "name": event.query + '-' + item, "code" : item}
+    //     } )
+    //     : _items;
+    // } else {
+    //   this.itemsAutocomplete = _items;
+    // }
+
+    // Versión síncrona
+    // this.itemsAutocomplete = this.ciudadesService.getCiudadesColombia();
+
+    // Versión asíncrona (simulando API)
+    // Luego en tu método:
+    this.ciudadesService.getCiudadesAsync().then((ciudades: any[]) => {
+      this.itemsAutocomplete = ciudades.map(
+        (value): CiudadOption => ({
+          key: value.id,
+          value: value.nombre,
+        })
+      );
+      console.log(this.itemsAutocomplete);
+    });
+  }
+
+  onCitySelect(event: any, name: string) {
+    console.log(event);
+    this.form.get(name)?.setValue(event.value.key); // Guarda solo el ID
+    //this.selectedUbicacion = event.value.value;
+  }
+
+  consultarLupa() {
+    console.log('Consultando component table para lupa');
+  }
+  //#endregion
 }
