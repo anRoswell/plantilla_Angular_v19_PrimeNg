@@ -5,55 +5,65 @@
     <input type="hidden" [id]="filter.name" [formControlName]="filter.name" />
     }
     }
-    <div [style]="{ 'display': isCloseFilters ? 'none' : 'flex' }" class="grid">
-      <!-- controles no ocultos        -->
-      @for (filter of filterNotHidden; track $index) {
-      <div class="col-3 px-2 pt-2 pb-0">
-        <!-- <div class="px-2 pt-2 pb-0" [ngClass]="getColumnClass(filterNotHidden.length)"> -->
-        <label [htmlFor]="filter.name">{{ filter.label }}</label>
-        <div [ngSwitch]="filter.typeControl">
-          <div *ngSwitchCase="typesControl.DROPDOWN">
-            <p-dropdown [id]="filter.name" styleClass="w-full" [formControlName]="filter.name"
-              [options]="filter.selectedlist" [optionLabel]="filter.optionLabel" [optionValue]="filter.optionValue"
-              [placeholder]="filter.placeholder ?? filter.label" [filter]="true" [showClear]="true"
-              [filterBy]="filter.optionLabel" [virtualScroll]="true" [virtualScrollItemSize]="30"
-              (onChange)="onSelectUnique($event, filter)"></p-dropdown>
-          </div>
-          <div *ngSwitchCase="typesControl.MULTI_SELECT">
-            <p-multiSelect [id]="filter.name" styleClass="w-full flex-auto white-space-nowrap"
-              [formControlName]="filter.name" [options]="filter.selectedlist" [optionLabel]="filter.optionLabel"
-              [optionValue]="filter.optionValue" [placeholder]="filter?.placeholder ?? filter.label"
-              [showToggleAll]="true" [selectAll]="isSelectAll" [showClear]="true" [maxSelectedLabels]="1"
-              [virtualScroll]="true" [virtualScrollItemSize]="30"
-              (onSelectAllChange)="onSelectAllChange($event, filter)" (onChange)="onSelectMulti($event, filter)"
-              (onClear)="onClear()"></p-multiSelect>
-          </div>
-          <div *ngSwitchCase="typesControl.INPUT">
+    <div [style]="{ 'display': isCloseFilters ? 'none' : 'flex' }" class="flex flex-wrap gap-3 w-full">
+      <div class="flex flex-wrap gap-3">
+        <!-- Controles visibles -->
+        @for (filter of filterNotHidden; track $index) {
+        <div class="w-full sm:w-6 md:w-4 lg:w-3 xl:w-2 px-2 pt-2 pb-0 min-w-[300px]">
+          <!-- <div class="px-2 pt-2 pb-0" [ngClass]="getColumnClass(filterNotHidden.length)"> -->
+          <label [htmlFor]="filter.name">{{ filter.label }}</label>
+          @switch (filter.typeControl) {
+          @case (typesControl.DROPDOWN) {
+          <p-select [id]="filter.name" styleClass="w-full flex-auto text-wrap" [panelStyle]="{ 'max-width': '100%' }"
+            [formControlName]="filter.name" [options]="filter.selectedlist" [optionLabel]="filter.optionLabel"
+            [optionValue]="filter.optionValue" [placeholder]="filter.placeholder ?? filter.label" [filter]="true"
+            [showClear]="true" [filterBy]="filter.optionLabel" [virtualScroll]="true" [virtualScrollItemSize]="30"
+            (onChange)="onSelectUnique($event, filter)"></p-select>
+          }
+          @case (typesControl.MULTI_SELECT) {
+          <p-multiSelect [id]="filter.name" styleClass="w-full flex-auto white-space-nowrap"
+            [panelStyle]="{ 'max-width': '100%' }" [formControlName]="filter.name" [options]="filter.selectedlist"
+            [optionLabel]="filter.optionLabel" [optionValue]="filter.optionValue"
+            [placeholder]="filter?.placeholder ?? filter.label" [showToggleAll]="true" [selectAll]="isSelectAll"
+            [showClear]="true" [maxSelectedLabels]="1" [virtualScroll]="true" [virtualScrollItemSize]="30"
+            (onSelectAllChange)="onSelectAllChange($event, filter)" (onChange)="onSelectMulti($event, filter)"
+            (onClear)="onClear()"></p-multiSelect>
+          }
+          @case (typesControl.INPUT) {
+          <div>
             <input pInputText type="text" [id]="filter.name" [formControlName]="filter.name"
               [placeholder]="filter?.placeholder ?? filter.label" [value]="filter.value" class="w-full" />
           </div>
-          <div *ngSwitchCase="typesControl.CALENDAR">
-            <p-calendar [id]="filter.name" styleClass="w-full" [formControlName]="filter.name"
+          }
+          @case (typesControl.CALENDAR) {
+          <div>
+            <p-datepicker [id]="filter.name" styleClass="w-full" [formControlName]="filter.name"
               [placeholder]="filter?.placeholder ?? filter.label" [minDate]="filter.minDate ?? minDate"
               [maxDate]="filter.maxDate ?? maxDate" [readonlyInput]="true" [showClear]="true"
-              [selectionMode]="filter.typeCalendar ?? typesCalendar.SINGLE"></p-calendar>
+              [selectionMode]="filter.typeCalendar ?? typesCalendar.SINGLE"></p-datepicker>
           </div>
+          }
+          }
+
         </div>
+        }
       </div>
-      }
     </div>
   </div>
   <div class="col-12 px-2 pt-0 pb-1">
-    <div class="flex justify-content-between">
-      <div class="flex p-0 m-0 align-items-center justify-content-center">
+    <div class="flex flex-wrap justify-between items-center">
+      <!-- <div class="flex p-0 m-0 align-items-center justify-content-start"> -->
+      <div class="flex items-center">
         <p-button [icon]="isCloseFilters ? 'pi pi-chevron-down' : 'pi pi-chevron-up'"
-          styleClass="bg-white border-400 text-600 button-custom-table-generic" (onClick)="onCloseFilters()">
+          styleClass="primary border-400 text-600 button-custom-table-generic" (onClick)="onCloseFilters()">
         </p-button>
         <p class="pl-2 m-0 font-semibold"> Parámetros de consulta</p>
       </div>
-
-      <p-button id="filter-button" (click)="onConsultFilter()" [style]="{ 'border-radius': '3px' }"
-        [disabled]="form.invalid" severity="primary" label="Consultar"></p-button>
+      <div class="mt-2 sm:mt-0">
+        <p-button id="filter-button" (click)="onConsultFilter()" [style]="{ 'border-radius': '3px' }"
+          [disabled]="form.invalid" severity="primary" label="Consultar">
+        </p-button>
+      </div>
     </div>
   </div>
 </form>

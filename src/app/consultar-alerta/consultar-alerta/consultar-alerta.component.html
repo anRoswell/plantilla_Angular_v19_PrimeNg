@@ -3,7 +3,7 @@
     <div class="grid m-2">
       <div class="col-12">
         <app-inbox (onConsult)="onConsult($event)" [table]="(tableSubject$ | async)" [data]="(dataSubject$ | async)"
-          (onLazyLoad)="onLoadRecords($event)">
+          (onLazyLoad)="onLoadRecords($event)" [filters]="(filtersSubject$ | async) ?? []">
           <p-button (click)="onExportSelectedExcel()" badge="{{ (dataSubject$ | async)?.data?.length ?? '0' }}"
             styleClass="ml-1 mt-1 bg-primary border-primary span-p-badge-primary"
             [disabled]="((dataSubject$ | async)?.data?.length ?? 0) === 0">

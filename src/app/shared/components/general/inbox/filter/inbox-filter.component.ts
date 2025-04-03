@@ -26,11 +26,12 @@ import { TypeControl } from '../../../../../common/enums/general/TypeControl';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // PrimeNG
-import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
 import { ButtonModule } from 'primeng/button';
+import { SelectModule } from 'primeng/select';
+import { DatePickerModule } from 'primeng/datepicker';
 
 @Component({
   selector: 'app-inbox-filter',
@@ -41,11 +42,12 @@ import { ButtonModule } from 'primeng/button';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    DropdownModule,
     MultiSelectModule,
     InputTextModule,
     CalendarModule,
-    ButtonModule
+    ButtonModule,
+    SelectModule,
+    DatePickerModule
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
@@ -91,6 +93,8 @@ export class InboxFilterComponent<T> {
   ngOnInit() {
     const group: any = {};
 
+    console.log('filters', this.filters);
+
     // inicializar controles y parametros
     this.filters?.forEach((filter: IInboxFilter) => {
       // inicializa listas de selecciona con la misma lista que llega
@@ -113,6 +117,9 @@ export class InboxFilterComponent<T> {
     this.filterNotHidden = this.filters.filter(
       (filter) => filter.typeControl !== TypeControl.HIDDEN
     );
+
+    console.log('filterHidden', this.filterHidden);
+    console.log('filterNotHidden', this.filterNotHidden);
 
     // crea filtros
     this.form = new FormGroup(group);

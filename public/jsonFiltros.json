@@ -1,0 +1,64 @@
+{
+  "status": 200,
+  "mensaje": "Consulta exitosa.",
+  "data": [
+    {
+      "name": "tipdoc",
+      "label": "Tipo Documento",
+      "typeControl": "dropdown",
+      "optionLabel": "label",
+      "optionValue": "value",
+      "selectedlist": [
+        { "label": "Factura Electronica", "value": "cm" },
+        { "label": "Factura Electronica", "value": "ma" },
+        { "label": "Factura Electronica", "value": "kg" }
+      ],
+      "placeholder": "Seleccione un Documento"
+    },
+    {
+      "name": "paso",
+      "label": "Paso",
+      "typeControl": "dropdown",
+      "selectedlist": [
+        { "label": "APROBAR DOCUMENTOS CONTABLES", "value": "activo" },
+        { "label": "REPOSITORIO COMPROBANTES", "value": "inactivo" }
+      ],
+      "optionLabel": "label",
+      "optionValue": "value",
+      "placeholder": "Seleccione un Paso"
+    },
+    {
+      "name": "proceso",
+      "label": "Proceso",
+      "typeControl": "multi-select",
+      "selectedlist": [
+        { "label": "FLUJO FACTURACION-YSYP", "value": "A" },
+        { "label": "FlUJO DE COMPROBANTES", "value": "B" },
+        { "label": "(917)-REPOSITORIO COMPROBANTES", "value": "C" }
+      ],
+      "optionLabel": "label",
+      "optionValue": "value",
+      "placeholder": "Seleccione Proceso"
+    },
+    {
+      "name": "cod",
+      "label": "Codigo",
+      "typeControl": "input",
+      "placeholder": "Ingrese un codigo"
+    },
+    {
+      "name": "fecha_cargue",
+      "label": "Fecha Cargue",
+      "typeControl": "calendar",
+      "typeCalendar": "single",
+      "placeholder": "Seleccione una fecha"
+    },
+    {
+      "name": "fecha_doc",
+      "label": "Fecha Documento",
+      "typeControl": "calendar",
+      "typeCalendar": "single",
+      "placeholder": "Seleccione una fecha"
+    }
+  ]
+}

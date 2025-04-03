@@ -2,10 +2,10 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
-  output,
+  ViewChild,
 } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
-import { lastValueFrom, Subject } from 'rxjs';
+import { lastValueFrom, Subject, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Export } from './../../util/exportExcel';
 import { IDataPagination, IPagination } from '../../models/general/IPagination';
@@ -14,9 +14,9 @@ import { ITable, TypeColumn, TypeFormat } from '../../models/general/ITable';
 import { InboxComponent } from '../../shared/components/general/inbox/inbox.component';
 import { ButtonModule } from 'primeng/button';
 import { AlertaModel } from '../../models/class/alerta.model';
-import { BehaviorSubject } from 'rxjs';
-import { ViewChild } from '@angular/core';
 import { ModalTablaComponent } from "../../shared/components/general/modal-tabla/modal-tabla.component";
+import { IInboxFilter } from '../../models/general/IInboxFilter';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-consultar-alerta',
@@ -33,20 +33,32 @@ export class ConsultarAlertaComponent implements AfterViewInit {
   tableSubject$ = new Subject<ITable>();
   dataSubject$ = new Subject<IDataPagination<AlertaModel[]>>();
   data!: IDataPagination<AlertaModel[]>;
+  filters: IInboxFilter[] = [];
+  filtersSubject$ = new BehaviorSubject<IInboxFilter[]>([]);
+  valuesFilter: { [key: string]: any } = {};
+
   @ViewChild(ModalTablaComponent) modalTabla!: ModalTablaComponent;
-  // types
+
   typesSeverity = TypeSeverity;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cd: ChangeDetectorRef) {
+    this.loadFilters();
+    this.filtersSubject$.subscribe((filters: IInboxFilter[]) => {
+      console.log("Filtros en filtersSubject$ después de setFilters():", filters);
+    });
+  }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.setTable();
+      this.loadFilters();
     }, 50);
+
+    this.filtersSubject$.subscribe((filters: IInboxFilter[]) => {
+      console.log("Filtros en filtersSubject$ después de loadFilters():", filters);
+    });
   }
 
-  //#region table
-  // config
   setTable() {
     const table: ITable = {
       fieldId: 'cod', // aqui se define el id de los datos
@@ -188,45 +200,67 @@ export class ConsultarAlertaComponent implements AfterViewInit {
     };
 
     this.tableSubject$.next(table);
+
   }
 
-  // funciones
+  async loadFilters() {
+    try {
+      const response = await lastValueFrom(this.http.get<any>('jsonFiltros.json'));
+      if (response?.status === 200) {
+        this.filters = response.data ?? [];
+        this.filtersSubject$.next(this.filters);// Actualiza el observable con los filtros cargados
+      } else {
+        console.error("Error al cargar filtros, respuesta inesperada:", response);
+      }
+    } catch (error) {
+      console.error("Error cargando filtros desde jsonFiltros.json:", error);
+    }
+  }
+
   async onLoadRecords(event?: any) {
+    if (!event || !event.rows) {
+      console.error("Error: El evento de paginación no tiene datos válidos", event);
+      return;
+    }
+
     this.currentPagination = event;
 
-    switch (event.rows) {
-      case 5:
-        this.data = await lastValueFrom(this.http.get<any>('data.json'));
-        break;
-      case 10:
-        this.data = await lastValueFrom(this.http.get<any>('data02.json'));
-        break;
-      case 15:
-        this.data = await lastValueFrom(this.http.get<any>('data03.json'));
-        break;
-      case 20:
-        this.data = await lastValueFrom(this.http.get<any>('data04.json'));
-        break;
+    try {
+      switch (event.rows) {
+        case 5:
+          this.data = await lastValueFrom(this.http.get<any>('data.json'));
+          break;
+        case 10:
+          this.data = await lastValueFrom(this.http.get<any>('data02.json'));
+          break;
+        case 15:
+          this.data = await lastValueFrom(this.http.get<any>('data03.json'));
+          break;
+        case 20:
+          this.data = await lastValueFrom(this.http.get<any>('data04.json'));
+          break;
+        default:
+          console.warn("No se encontró un caso para event.rows:", event.rows);
+          this.data = { data: [] }; // Evitar errores si event.rows tiene un valor inesperado
+          break;
+      }
+
+      this.dataSubject$.next(this.data);
+      console.log("Pagination Object:", this.currentPagination);
+    } catch (error) {
+      console.error("Error al cargar datos:", error);
     }
-    // this.data = await lastValueFrom(this.http.get<any>('data.json'));
-    this.dataSubject$.next(this.data);
-    console.log('Pagination Object:', this.currentPagination);
   }
 
   onConsult(event: any) {
-    this.onLoadRecords();
+    console.log("Evento recibido en onConsult:", event);
+    this.onLoadRecords(event || { rows: 5 });
   }
 
-  //#endregion
-
-  //#region buttons
   onExportSelectedExcel() {
     Export.Excel(this.data.data as any, 'Reporte_Alertas.xlsx');
   }
 
-  //#endregion
-
-  //#region Actions
   handleAction(record: any, btn: any) {
     console.log('Ejecutando acción:', btn.exec);
     console.log('Registro:', record);
@@ -278,5 +312,4 @@ export class ConsultarAlertaComponent implements AfterViewInit {
   //   // Implementación real de abrir modal
   // }
 
-  //#endregion
 }
